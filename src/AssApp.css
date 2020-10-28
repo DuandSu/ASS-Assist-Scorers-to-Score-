@@ -1,0 +1,114 @@
+body {
+  background-color: #282c34;
+}
+
+.App-Header {
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-Buttons {
+  color: aqua;
+  font-size: larger;
+  background-color: #282c34;
+}
+
+.App-Games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-Logo1 {
+  height: 20vmin;
+  margin: 20vmin;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 100%;
+  border: 5px solid blue;
+}
+
+.App-Logo1:hover {
+  height: 24vmin;
+  margin: -18px;
+  border: 5px solid blue;
+}
+
+.App-Logo1:active {
+  height: 24vmin;
+  margin: -33px;
+  border: 20px solid red;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-Logo1 {
+    animation: App-logo-spin-CW infinite 10s linear, back2white alternate infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin-CW {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin-counterCW {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes back2gray {
+  from {background-color: 282c34;}
+  to {background-color: gray;}
+}
+
+@keyframes back2yellow {
+  from {background-color: #282c34;}
+  to {background-color: yellow;}
+}
+
+@keyframes back2red {
+  from {background-color: #282c34;}
+  to {background-color: red;}
+}
+
+@keyframes back2white {
+  from {background-color: #282c34;}
+  to {background-color: white;}
+}
+
+@keyframes back2blue {
+  from {background-color: #282c34;}
+  to {background-color: blue;}
+}
+
+@keyframes back2greenyellow {
+  from {background-color: #282c34;}
+  to {background-color: greenyellow;}
+}
+
+.Message-Area {
+  font-size: calc(10px + 2vmin);
+  color: green;
+}
