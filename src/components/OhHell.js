@@ -1,5 +1,6 @@
 import React from 'react';
 import './OhHell.css';
+// import OHPlayerList from './OHPlayerList.js';
 
 class OhHell extends React.Component {
 
@@ -10,10 +11,12 @@ class OhHell extends React.Component {
         this.screwTheDealer = false;
         this.onInputchange = this.onInputchange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
+        // this.listOfPlayers = [];
         this.state = {
           msgArea: this.props.sMessageArea,
           inputGameNo: 11020,
-          inputGameComm: "Feel free to enter FUN comments for this game!"
+          inputGameComm: "Feel free to enter FUN comments for this game!",
+          inputPlayer: [],
         };
     }
 
@@ -38,9 +41,21 @@ class OhHell extends React.Component {
           if (52 % event.target.value === 0) noCards--;
           this.maxCardsCheck = noCards;
 
+          let tmpInputPlayer = this.state.inputPlayer.slice(0, event.target.value-1);
+          for (let playerNo = 0; playerNo < event.target.value; playerNo++) {
+              // if (this.state.inputPlayer.length === 0)
+              //     tmpInputPlayer[playerNo] = `Player ${playerNo+1}`;
+              // else
+                  tmpInputPlayer[playerNo] = this.state.inputPlayer[playerNo];
+
+          }
+
+          if (this.state.inputPlayer.length === 0) tmpInputPlayer[event.target.value-1] = "Dealer";
+          
           this.setState({
             inputNoPlayerCards: noCards,
-            msgArea: ""
+            msgArea: "",
+            inputPlayer: tmpInputPlayer,
           });
           this.passedInputNoPlayers = true;
           this.passedInputNoPlayers = true;
@@ -53,11 +68,25 @@ class OhHell extends React.Component {
         }
       }
 
+      if (event.target.name.slice(0,10) === "inputPlayer") {
+          let tmpInputPlayer = this.state.inputPlayer.slice(0);
+          let playerNo = parseInt(event.target.name.slice(11));
+          tmpInputPlayer[playerNo] = event.target.value;
+          this.setState({
+            inputPlayer: tmpInputPlayer,
+          });
+      }
+
       if (event.target.name === "inputNoPlayerCards") {
         if (event.target.value > 1 && event.target.value <= this.maxCardsCheck) {
+
+          // this.listOfPlayers[0] = "Dealer";
+          // this.listOfPlayers[event.target.value-1] = "Last Player";
+
           this.setState({
             inputNoPlayerCards: event.target.value,
-            msgArea: ""
+            // inputPlayer[0]: this.listOfPlayers[0],
+            msgArea: "",
           });
           this.passedInputNoPlayers = true;
         }
@@ -89,8 +118,25 @@ class OhHell extends React.Component {
     
     render() {
 
-      const { items } = this.state;
-      
+      // const { items } = this.state;
+
+      let playerList = [];
+
+      for (let playerNo = 0; playerNo < this.state.inputPlayer.length; playerNo++) {
+          playerList.push(
+              <div>
+                  <br></br>
+                  <label htmlFor={`inputPlayer${playerNo}`}>Enter Player {playerNo+1}: </label>
+                  <input 
+                      name={`inputPlayer${playerNo}`}
+                      type="text"
+                      value={this.state.inputPlayer[playerNo]}
+                      onChange={this.onInputchange}>
+                  </input>            
+              </div>
+          );
+      }
+
       return (
         <div>
           <header className="App-Header">
@@ -141,6 +187,11 @@ class OhHell extends React.Component {
                 value={this.state.inputNoPlayerCards}
                 onChange={this.onInputchange}>
             </input>
+            {/* <OHPlayerList 
+                NumberPlayers={this.state.inputNoPlayers}
+                listOfPlayers={this.listOfPlayers}
+              /> */}
+            {playerList}
             <br></br>
             <button type="button" onClick={this.onSubmitForm}>Create</button>
             <button type="button" onClick={this.onSubmitForm}>Cancel</button>          
