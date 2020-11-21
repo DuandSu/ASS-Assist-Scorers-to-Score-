@@ -1,4 +1,5 @@
 import React from 'react';
+import OHDealPattern from './OHDealPattern';
 import './OhHell.css';
 // import OHPlayerList from './OHPlayerList.js';
 
@@ -143,23 +144,23 @@ class OhHell extends React.Component {
 
         // const { items } = this.state;
 
-        let dispMaxCards = this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck; 
-        let dealpatternSelect =
-            <div>
-                <label htmlFor="dealPatternSelect">Deal Pattern: </label>
-                <select 
-                    name="dealPatternSelect"
-                    type="text"
-                    value={this.state.dealPatternSelect}
-                    onChange={this.onInputchange}>
-                        <option value="H2L2H" key="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
-                        <option value="H2LL2H" key="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
-                        <option value="L2H2L" key="L2H2L">{`1..${dispMaxCards}..1`}</option>
-                        <option value="L2HH2L" key="L2HH2L">{`1..${dispMaxCards}..${dispMaxCards}..1`}</option>
-                        <option value="H2L" key="H2L">{`${dispMaxCards}..1`}</option>
-                        <option value="L2H" key="L2H">{`1..${dispMaxCards}`}</option>
-                </select>            
-            </div>
+        // let dispMaxCards = this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck; 
+        // let dealpatternSelect =
+        //     <div>
+        //         <label htmlFor="dealPatternSelect">Deal Pattern: </label>
+        //         <select 
+        //             name="dealPatternSelect"
+        //             type="text"
+        //             value={this.state.dealPatternSelect}
+        //             onChange={this.onInputchange}>
+        //                 <option value="H2L2H" key="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
+        //                 <option value="H2LL2H" key="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
+        //                 <option value="L2H2L" key="L2H2L">{`1..${dispMaxCards}..1`}</option>
+        //                 <option value="L2HH2L" key="L2HH2L">{`1..${dispMaxCards}..${dispMaxCards}..1`}</option>
+        //                 <option value="H2L" key="H2L">{`${dispMaxCards}..1`}</option>
+        //                 <option value="L2H" key="L2H">{`1..${dispMaxCards}`}</option>
+        //         </select>            
+        //     </div>
 
         let playerList = [];
 
@@ -227,7 +228,12 @@ class OhHell extends React.Component {
                         value={this.state.inputNoPlayerCards}
                         onChange={this.onInputchange}>
                     </input>
-                    {dealpatternSelect}
+                    {/* {dealpatternSelect} */}
+                    <OHDealPattern
+                        dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
+                        defValue={this.state.dealPatternSelect}
+                        onChange={this.onInputchange}
+                    />
                     {/* <OHPlayerList 
                         NumberPlayers={this.state.inputNoPlayers}
                         listOfPlayers={this.listOfPlayers}
