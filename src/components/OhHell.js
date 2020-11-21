@@ -141,6 +141,7 @@ class OhHell extends React.Component {
 
         // const { items } = this.state;
 
+        let dispMaxCards = this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck; 
         let dealpatternSelect =
             <div>
                 <label htmlFor="dealPatternSelect">Deal Pattern: </label>
@@ -149,12 +150,12 @@ class OhHell extends React.Component {
                     type="text"
                     value={this.state.dealPatternSelect}
                     onChange={this.onInputchange}>
-                        <option value="H2L2H">10..1..10</option>
-                        <option value="H2LL2H">10..1..1..10</option>
-                        <option value="L2H2L">1..10..1</option>
-                        <option value="L2HH2L">1..10..10..1</option>
-                        <option value="H2L">10..1</option>
-                        <option value="L2H">1..10</option>
+                        <option value="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
+                        <option value="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
+                        <option value="L2H2L">{`1..${dispMaxCards}..1`}</option>
+                        <option value="L2HH2L">{`1..${dispMaxCards}..${dispMaxCards}..1`}</option>
+                        <option value="H2L">{`${dispMaxCards}..1`}</option>
+                        <option value="L2H">{`1..${dispMaxCards}`}</option>
                 </select>            
             </div>
 
