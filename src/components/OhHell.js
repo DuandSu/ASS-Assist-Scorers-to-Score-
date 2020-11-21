@@ -16,6 +16,7 @@ class OhHell extends React.Component {
           msgArea: this.props.sMessageArea,
           inputGameNo: 11020,
           inputGameComm: "Feel free to enter FUN comments for this game!",
+          dealPatternSelect: "H2L2H",
           inputPlayer: [],
         };
     }
@@ -96,6 +97,15 @@ class OhHell extends React.Component {
             }
         }
         //
+        // Actions for Deal Pattern
+        //
+        else if (event.target.name === "dealPatternSelect"){
+            this.setState({
+                dealPatternSelect: event.target.value,
+                msgArea: "",
+            });          
+        }
+        //
         // Actions for change to the Players List
         //
         else if (event.target.name.slice(0,11) === "inputPlayer") {
@@ -130,6 +140,23 @@ class OhHell extends React.Component {
     render() {
 
         // const { items } = this.state;
+
+        let dealpatternSelect =
+            <div>
+                <label htmlFor="dealPatternSelect">Deal Pattern: </label>
+                <select 
+                    name="dealPatternSelect"
+                    type="text"
+                    value={this.state.dealPatternSelect}
+                    onChange={this.onInputchange}>
+                        <option value="H2L2H">10..1..10</option>
+                        <option value="H2LL2H">10..1..1..10</option>
+                        <option value="L2H2L">1..10..1</option>
+                        <option value="L2HH2L">1..10..10..1</option>
+                        <option value="H2L">10..1</option>
+                        <option value="L2H">1..10</option>
+                </select>            
+            </div>
 
         let playerList = [];
 
@@ -176,7 +203,7 @@ class OhHell extends React.Component {
                     </textarea>
                     <br></br>
                     <br></br>
-                    <label htmlFor="checkScrewTD">Screw the Dealer?: </label>
+                    <label htmlFor="checkScrewTD">Screw the Dealer? (Play with Hook?): </label>
                     <input 
                         name="checkScrewTD" 
                         type="checkbox" 
@@ -198,6 +225,7 @@ class OhHell extends React.Component {
                         value={this.state.inputNoPlayerCards}
                         onChange={this.onInputchange}>
                     </input>
+                    {dealpatternSelect}
                     {/* <OHPlayerList 
                         NumberPlayers={this.state.inputNoPlayers}
                         listOfPlayers={this.listOfPlayers}
