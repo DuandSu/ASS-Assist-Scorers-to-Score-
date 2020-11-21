@@ -16,6 +16,8 @@ class OhHell extends React.Component {
           msgArea: this.props.sMessageArea,
           inputGameNo: 11020,
           inputGameComm: "Feel free to enter FUN comments for this game!",
+          inputNoPlayers: 2,
+          inputNoPlayerCards: 21,
           dealPatternSelect: "H2L2H",
           inputPlayer: [],
         };
@@ -150,12 +152,12 @@ class OhHell extends React.Component {
                     type="text"
                     value={this.state.dealPatternSelect}
                     onChange={this.onInputchange}>
-                        <option value="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
-                        <option value="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
-                        <option value="L2H2L">{`1..${dispMaxCards}..1`}</option>
-                        <option value="L2HH2L">{`1..${dispMaxCards}..${dispMaxCards}..1`}</option>
-                        <option value="H2L">{`${dispMaxCards}..1`}</option>
-                        <option value="L2H">{`1..${dispMaxCards}`}</option>
+                        <option value="H2L2H" key="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
+                        <option value="H2LL2H" key="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
+                        <option value="L2H2L" key="L2H2L">{`1..${dispMaxCards}..1`}</option>
+                        <option value="L2HH2L" key="L2HH2L">{`1..${dispMaxCards}..${dispMaxCards}..1`}</option>
+                        <option value="H2L" key="H2L">{`${dispMaxCards}..1`}</option>
+                        <option value="L2H" key="L2H">{`1..${dispMaxCards}`}</option>
                 </select>            
             </div>
 
@@ -163,8 +165,7 @@ class OhHell extends React.Component {
 
         for (let playerNo = 0; playerNo < this.state.inputPlayer.length; playerNo++) {
             playerList.push(
-                <div>
-                    <br></br>
+                <div key={`divPlayerList${playerNo}`}>
                     <label htmlFor={`inputPlayer${playerNo}`}>Enter Player {playerNo+1}: </label>
                     <input 
                         name={`inputPlayer${playerNo}`}
@@ -231,6 +232,7 @@ class OhHell extends React.Component {
                         NumberPlayers={this.state.inputNoPlayers}
                         listOfPlayers={this.listOfPlayers}
                       /> */}
+                    <br></br>
                     {playerList}
                     <br></br>
                     <button type="button" onClick={this.onSubmitForm}>Create</button>
