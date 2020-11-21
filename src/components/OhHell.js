@@ -1,7 +1,7 @@
 import React from 'react';
-import OHDealPattern from './OHDealPattern';
 import './OhHell.css';
-// import OHPlayerList from './OHPlayerList.js';
+import OHDealPattern from './OHDealPattern';
+import OHPlayerList from './OHPlayerList.js';
 
 class OhHell extends React.Component {
 
@@ -10,7 +10,7 @@ class OhHell extends React.Component {
         this.maxCardsCheck = 51;
         this.passedInputNoPlayers = false;
         this.screwTheDealer = false;
-        this.onInputchange = this.onInputchange.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
         // this.listOfPlayers = [];
         this.state = {
@@ -24,7 +24,7 @@ class OhHell extends React.Component {
         };
     }
 
-    onInputchange(event) {
+    onInputChange(event) {
         console.log(event.target.name + "=" + event.target.value);
         this.setState({
             [event.target.name]: event.target.value
@@ -152,7 +152,7 @@ class OhHell extends React.Component {
         //             name="dealPatternSelect"
         //             type="text"
         //             value={this.state.dealPatternSelect}
-        //             onChange={this.onInputchange}>
+        //             onChange={this.onInputChange}>
         //                 <option value="H2L2H" key="H2L2H">{`${dispMaxCards}..1..${dispMaxCards}`}</option>
         //                 <option value="H2LL2H" key="H2LL2H">{`${dispMaxCards}..1..1..${dispMaxCards}`}</option>
         //                 <option value="L2H2L" key="L2H2L">{`1..${dispMaxCards}..1`}</option>
@@ -162,21 +162,21 @@ class OhHell extends React.Component {
         //         </select>            
         //     </div>
 
-        let playerList = [];
+        // let playerList = [];
 
-        for (let playerNo = 0; playerNo < this.state.inputPlayer.length; playerNo++) {
-            playerList.push(
-                <div key={`divPlayerList${playerNo}`}>
-                    <label htmlFor={`inputPlayer${playerNo}`}>Enter Player {playerNo+1}: </label>
-                    <input 
-                        name={`inputPlayer${playerNo}`}
-                        type="text"
-                        value={this.state.inputPlayer[playerNo]}
-                        onChange={this.onInputchange}>
-                    </input>            
-                </div>
-            );
-        }
+        // for (let playerNo = 0; playerNo < this.state.inputPlayer.length; playerNo++) {
+        //     playerList.push(
+        //         <div key={`divPlayerList${playerNo}`}>
+        //             <label htmlFor={`inputPlayer${playerNo}`}>Enter Player {playerNo+1}: </label>
+        //             <input 
+        //                 name={`inputPlayer${playerNo}`}
+        //                 type="text"
+        //                 value={this.state.inputPlayer[playerNo]}
+        //                 onChange={this.onInputChange}>
+        //             </input>            
+        //         </div>
+        //     );
+        // }
 
         return (
             <div>
@@ -193,7 +193,7 @@ class OhHell extends React.Component {
                         name="inputGameNo" 
                         type="number" 
                         value={this.state.inputGameNo}
-                        onChange={this.onInputchange}>
+                        onChange={this.onInputChange}>
                     </input>
                     <br></br>
                     <br></br>
@@ -202,7 +202,7 @@ class OhHell extends React.Component {
                         name="inputGameComm" 
                         type="text" 
                         value={this.state.inputGameComm}
-                        onChange={this.onInputchange}>
+                        onChange={this.onInputChange}>
                     </textarea>
                     <br></br>
                     <br></br>
@@ -210,7 +210,7 @@ class OhHell extends React.Component {
                     <input 
                         name="checkScrewTD" 
                         type="checkbox" 
-                        onChange={this.onInputchange}>
+                        onChange={this.onInputChange}>
                     </input>
                     <br></br>
                     <label htmlFor="inputNoPlayers">Enter Number of Players: </label>
@@ -218,7 +218,7 @@ class OhHell extends React.Component {
                         name="inputNoPlayers" 
                         type="number"
                         value={this.state.inputNoPlayers}
-                        onChange={this.onInputchange}>
+                        onChange={this.onInputChange}>
                     </input>
                     <br></br>
                     <label htmlFor="inputNoPlayerCards">Enter Number of Cards Per Player: </label>
@@ -226,20 +226,20 @@ class OhHell extends React.Component {
                         name="inputNoPlayerCards" 
                         type="number"
                         value={this.state.inputNoPlayerCards}
-                        onChange={this.onInputchange}>
+                        onChange={this.onInputChange}>
                     </input>
                     {/* {dealpatternSelect} */}
                     <OHDealPattern
                         dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
                         defValue={this.state.dealPatternSelect}
-                        onChange={this.onInputchange}
-                    />
-                    {/* <OHPlayerList 
-                        NumberPlayers={this.state.inputNoPlayers}
-                        listOfPlayers={this.listOfPlayers}
-                      /> */}
+                        onChange={this.onInputChange}
+                        />
                     <br></br>
-                    {playerList}
+                    <OHPlayerList 
+                        listOfPlayers={this.state.inputPlayer}
+                        onChange={this.onInputChange}
+                      />
+                    {/* {playerList} */}
                     <br></br>
                     <button type="button" onClick={this.onSubmitForm}>Create</button>
                     <button type="button" onClick={this.onSubmitForm}>Cancel</button>          

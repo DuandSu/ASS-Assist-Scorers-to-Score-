@@ -2,7 +2,7 @@ import React from 'react';
 
 function OHDealPattern(props) {
 
-    let dealpatternSelect =
+    let dealPatternSelect =
         <div>
             <label htmlFor="dealPatternSelect">Deal Pattern: </label>
             <select 
@@ -21,7 +21,7 @@ function OHDealPattern(props) {
 
     return (
         <div>
-            {dealpatternSelect}
+            {dealPatternSelect}
         </div>
     );
 }
