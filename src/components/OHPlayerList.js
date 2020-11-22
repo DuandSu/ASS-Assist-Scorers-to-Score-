@@ -24,7 +24,7 @@ function OHPlayerList(props) {
         <div>
             {playerList}
         </div>
-      );
+    );
 }
 
 export default OHPlayerList;
