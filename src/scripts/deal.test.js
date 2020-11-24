@@ -23,6 +23,15 @@ test('Class Deal: Does class instantiation?', () => {
     expect(roundOne.points).toBe(0);
 });
 
+// Next:
+// 1. checkBid
+// 2. updateBid
+// 2. getBid
+// 3. checkMade
+// 3. getMade
+// 4. updateMade
+// 5. score
+// 6. getscore
 
 test('Class Deal: Does class instantiation?', () => {
 

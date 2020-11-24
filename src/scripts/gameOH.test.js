@@ -394,3 +394,19 @@ test('Class gameOH: Test Deal Pattern L2HH2L instantiation?', () => {
     expect(game1To10To10To1.deals[4][17].points).toBe(0);
 
 });
+
+// Next:
+// 1. updateAllBids
+// 2. updateAllMadeAndScore
+// 3. get PlayerBid
+// 3. updatePlayerBid
+// 4. updatePlayerMade
+// 4. getPlayerMade
+// 4. getPlayerScore
+// 5. scorePlayer
+// 6. getPlayerIndex
+// 7. getPlayerName
+// 8. isScrewTD
+// 9. getDealPattern
+// 10. getPlayerScoreTotal
+// 11. getPlayerScoreRound
