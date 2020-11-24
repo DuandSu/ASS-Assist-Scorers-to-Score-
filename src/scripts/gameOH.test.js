@@ -410,3 +410,5 @@ test('Class gameOH: Test Deal Pattern L2HH2L instantiation?', () => {
 // 9. getDealPattern
 // 10. getPlayerScoreTotal
 // 11. getPlayerScoreRound
+// 12. getNumberPlayers
+// 13. getNumberPlayerCards
