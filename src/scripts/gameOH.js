@@ -54,7 +54,7 @@ class GameOH {
                     new deal.Deal(
                         this.deals[i].length + 1, // Round #
                         startAtOne 
-                            ? noPlayerCards + (noPlayerCards - this.deals[i].length) - 1 
+                            ? noPlayerCards + (noPlayerCards - this.deals[i].length)
                             : this.deals[i].length + 1 - noPlayerCards // # of Cards
                     )
                 );
