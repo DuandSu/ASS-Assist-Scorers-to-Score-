@@ -261,3 +261,69 @@ test('Class gameOH: Test Deal Pattern L2H2L instantiation?', () => {
     // console.log(game1To10To1.deals[4][17]);
     // console.log(game1To10To1.deals[4][18]);
 });
+
+test('Class gameOH: Test Deal Pattern H2LL2H instantiation?', () => {
+
+    const gameNo = 105;
+    const gameComm = "Test Game for 10..1..1..10";
+    const screwTD = false;
+    const noPlayers = 5;
+    const noPlayerCards = 10;
+    const dealPattern = "H2LL2H";
+    const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game10To1To1To10 = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    expect(game10To1To1To10.gameNo).toBe(105);
+    expect(game10To1To1To10.gameComm).toBe("Test Game for 10..1..1..10");
+    expect(game10To1To1To10.screwTD).toBe(false);
+    expect(game10To1To1To10.noPlayers).toBe(5);
+    expect(game10To1To1To10.noPlayerCards).toBe(10);
+    expect(game10To1To1To10.dealPattern).toBe("H2LL2H");
+    expect(game10To1To1To10.listOfPlayers).toEqual(["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"]);
+
+    // console.log(game10To1To1To10);
+    expect(game10To1To1To10.deals[0][0].roundNo).toBe(1);
+    expect(game10To1To1To10.deals[0][0].cardsDealt).toBe(10);
+    expect(game10To1To1To10.deals[0][0].points).toBe(0);
+    expect(game10To1To1To10.deals[0][9].roundNo).toBe(10);
+    expect(game10To1To1To10.deals[0][9].cardsDealt).toBe(1);
+    expect(game10To1To1To10.deals[0][9].points).toBe(0);
+    expect(game10To1To1To10.deals[0][10].roundNo).toBe(11);
+    expect(game10To1To1To10.deals[0][10].cardsDealt).toBe(1);
+    expect(game10To1To1To10.deals[0][10].points).toBe(0);
+    expect(game10To1To1To10.deals[0][11].roundNo).toBe(12);
+    expect(game10To1To1To10.deals[0][11].cardsDealt).toBe(2);
+    expect(game10To1To1To10.deals[0][11].points).toBe(0);
+    expect(game10To1To1To10.deals[0][12].roundNo).toBe(13);
+    expect(game10To1To1To10.deals[0][12].cardsDealt).toBe(3);
+    expect(game10To1To1To10.deals[0][12].points).toBe(0);
+    expect(game10To1To1To10.deals[0][19].roundNo).toBe(20);
+    expect(game10To1To1To10.deals[0][19].cardsDealt).toBe(10);
+    expect(game10To1To1To10.deals[0][19].points).toBe(0);
+
+    // console.log(game10To1To1To10.deals[0][20].roundNo);
+
+    expect(game10To1To1To10.deals[4][0].roundNo).toBe(1);
+    expect(game10To1To1To10.deals[4][0].cardsDealt).toBe(10);
+    expect(game10To1To1To10.deals[4][0].points).toBe(0);
+    expect(game10To1To1To10.deals[4][9].roundNo).toBe(10);
+    expect(game10To1To1To10.deals[4][9].cardsDealt).toBe(1);
+    expect(game10To1To1To10.deals[4][9].points).toBe(0);
+    expect(game10To1To1To10.deals[4][10].roundNo).toBe(11);
+    expect(game10To1To1To10.deals[4][10].cardsDealt).toBe(1);
+    expect(game10To1To1To10.deals[4][10].points).toBe(0);
+    expect(game10To1To1To10.deals[4][11].roundNo).toBe(12);
+    expect(game10To1To1To10.deals[4][11].cardsDealt).toBe(2);
+    expect(game10To1To1To10.deals[4][11].points).toBe(0);
+    expect(game10To1To1To10.deals[4][12].roundNo).toBe(13);
+    expect(game10To1To1To10.deals[4][12].cardsDealt).toBe(3);
+    expect(game10To1To1To10.deals[4][12].points).toBe(0);
+    expect(game10To1To1To10.deals[4][19].roundNo).toBe(20);
+    expect(game10To1To1To10.deals[4][19].cardsDealt).toBe(10);
+    expect(game10To1To1To10.deals[4][19].points).toBe(0);
+
+});
