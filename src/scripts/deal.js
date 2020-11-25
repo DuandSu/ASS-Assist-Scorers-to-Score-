@@ -62,6 +62,10 @@ class Deal {
             return this.points;
         }
     }
+
+    getScore() {
+        return this.points;
+    }
 }
 
 export default {Deal};

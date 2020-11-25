@@ -112,50 +112,76 @@ test('Class Deal: Method Scoring', () => {
     const roundOne = new deal.Deal (roundNo, noCards);
 
     expect(roundOne.score()).toBeNull(); // Score cannot be made before Bid and Made updates.
+    expect(roundOne.getScore()).toBe(0);
+
     roundOne.updateBid(0);
     expect(roundOne.getBid()).toBe(0);
-
     expect(roundOne.score()).toBeNull(); // Score cannot be made before Made updates.
+    expect(roundOne.getScore()).toBe(0);
+
     roundOne.updateMade(0);
     expect(roundOne.getMade()).toBe(0);
-
     expect(roundOne.score()).toBe(10);
+    expect(roundOne.getScore()).toBe(10);
 
     roundOne.updateMade(1);
     expect(roundOne.getMade()).toBe(1);
     expect(roundOne.score()).toBe(1);
+    expect(roundOne.getScore()).toBe(1);
 
     roundOne.updateMade(10);
     expect(roundOne.getMade()).toBe(10);
     expect(roundOne.score()).toBe(10);
+    expect(roundOne.getScore()).toBe(10);
     
     roundOne.updateBid(1);
     roundOne.updateMade(0);
     expect(roundOne.score()).toBe(0);
+    expect(roundOne.getScore()).toBe(0);
+
     roundOne.updateMade(1);
     expect(roundOne.score()).toBe(11);
+    expect(roundOne.getScore()).toBe(11);
+
     roundOne.updateMade(2);
     expect(roundOne.score()).toBe(2);
+    expect(roundOne.getScore()).toBe(2);
+
     roundOne.updateMade(10);
     expect(roundOne.score()).toBe(10);
+    expect(roundOne.getScore()).toBe(10);
 
     roundOne.updateBid(5);
     roundOne.updateMade(0);
     expect(roundOne.score()).toBe(0);
+    expect(roundOne.getScore()).toBe(0);
+
     roundOne.updateMade(1);
     expect(roundOne.score()).toBe(1);
+    expect(roundOne.getScore()).toBe(1);
+
     roundOne.updateMade(5);
     expect(roundOne.score()).toBe(55);
+    expect(roundOne.getScore()).toBe(55);
+
     roundOne.updateMade(10);
     expect(roundOne.score()).toBe(10);
+    expect(roundOne.getScore()).toBe(10);
     
     roundOne.updateBid(10);
     roundOne.updateMade(0);
     expect(roundOne.score()).toBe(0);
+    expect(roundOne.getScore()).toBe(0);
+
     roundOne.updateMade(1);
     expect(roundOne.score()).toBe(1);
+    expect(roundOne.getScore()).toBe(1);
+
     roundOne.updateMade(5);
     expect(roundOne.score()).toBe(5);
+    expect(roundOne.getScore()).toBe(5);
+
     roundOne.updateMade(10);
     expect(roundOne.score()).toBe(110);
+    expect(roundOne.getScore()).toBe(110);
 });
