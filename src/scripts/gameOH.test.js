@@ -394,21 +394,110 @@ test('Class gameOH: Test Deal Pattern L2HH2L instantiation?', () => {
     expect(game1To10To10To1.deals[4][17].points).toBe(0);
 
 });
+//
+// getPlayerName
+// getPlayerIndex
+// getPlayerNo
+//
+test('Class gameOH: Test Player Methods?', () => {
 
+    const gameNo = 107;
+    const gameComm = "Testing Game for 10..1..1..10 Name Methods";
+    const screwTD = false;
+    const noPlayers = 5;
+    const noPlayerCards = 9;
+    const dealPattern = "H2L2H";
+    const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    expect(game.getPlayerName(-1, "INDEX")).toBe(0);
+    expect(game.getPlayerName(0, "INDEX")).toBe("Duane");
+    expect(game.getPlayerName(1, "INDEX")).toBe("Suzanne");
+    expect(game.getPlayerName(4, "INDEX")).toBe("Joseph");
+    expect(game.getPlayerName(5, "INDEX")).toBe(0);
+
+    expect(game.getPlayerName(-1, "PLAYERNO")).toBe(0);
+    expect(game.getPlayerName(0, "PLAYERNO")).toBe(0);
+    expect(game.getPlayerName(1, "PLAYERNO")).toBe("Duane");
+    expect(game.getPlayerName(2, "PLAYERNO")).toBe("Suzanne");
+    expect(game.getPlayerName(5, "PLAYERNO")).toBe("Joseph");
+    expect(game.getPlayerName(6, "PLAYERNO")).toBe(0);
+
+    expect(game.getPlayerName(0)).toBe("Duane");
+    expect(game.getPlayerName(1)).toBe("Suzanne");
+    expect(game.getPlayerName(4)).toBe("Joseph");
+
+    expect(game.getPlayerName(0, "JUNK")).toBe("Duane");
+    expect(game.getPlayerName(1, "JUNK")).toBe("Suzanne");
+    expect(game.getPlayerName(4, "JUNK")).toBe("Joseph");
+
+    expect(game.getPlayerIndex("Duane")).toBe(0);
+    expect(game.getPlayerIndex("Suzanne")).toBe(1);
+    expect(game.getPlayerIndex("Joseph")).toBe(4);
+    expect(game.getPlayerIndex("Santa")).toBe(-1);
+    
+    expect(game.getPlayerNo("Duane")).toBe(1);
+    expect(game.getPlayerNo("Suzanne")).toBe(2);
+    expect(game.getPlayerNo("Joseph")).toBe(5);
+    expect(game.getPlayerNo("Santa")).toBe(0);
+
+});
+// getDealPattern
+// getNoPlayers
+// getNoPlayerCards
+test('Class gameOH: Test Misc Get Methods?', () => {
+
+    const gameNo = 108;
+    const gameComm = "Testing Game for 10..1..1..10 Name Methods";
+    const screwTD = false;
+    const noPlayers = 5;
+    const noPlayerCards = 10;
+    const dealPattern = "H2L2H";
+    const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    expect(game.getDealPattern()).toBe("H2L2H");
+    expect(game.getNoPlayers()).toBe(5);
+    expect(game.getNoPlayerCards()).toBe(10);
+});
+
+test('Class gameOH: Test Bid Methods?', () => {
+
+    const gameNo = 109;
+    const gameComm = "Testing Game for 10..1..1..10 Name Methods";
+    const screwTD = false;
+    const noPlayers = 5;
+    const noPlayerCards = 10;
+    const dealPattern = "H2L2H";
+    const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    let listBids = [0, 1, 2, 3, 4];
+    expect(game.updateAllBids(listBids)).toBe(10);
+
+});
 // Next:
-// 1. updateAllBids
-// 2. updateAllMadeAndScore
-// 3. get PlayerBid
-// 3. updatePlayerBid
-// 4. updatePlayerMade
-// 4. getPlayerMade
-// 4. getPlayerScore
-// 5. scorePlayer
-// 6. getPlayerIndex
-// 7. getPlayerName
-// 8. isScrewTD
-// 9. getDealPattern
-// 10. getPlayerScoreTotal
-// 11. getPlayerScoreRound
-// 12. getNumberPlayers
-// 13. getNumberPlayerCards
+// 4. updatePlayerBid
+// 5. get PlayerBid
+// 6. updateAllBids
+// 7. updatePlayerMade
+// 8. getPlayerMade
+// 9. updateAllMadeAndScore
+// 10. scorePlayer
+// 11. getPlayerScore
+// 12. getPlayerScoreRound
+// 13. getPlayerScoreTotal
+// 14. isScrewTD
+// 15. Need to add tracking Dealer for isScrewTD mode.

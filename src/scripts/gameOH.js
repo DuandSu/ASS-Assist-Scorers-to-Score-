@@ -71,6 +71,50 @@ class GameOH {
             }
         }
     }
+
+    getPlayerName(getKey, getMethod) {
+        //
+        // If "INDEX" grab the name by index. If NOT specified then "INDEX" is default.
+        //
+        if (typeof getMethod === 'undefined' || getMethod === "INDEX" || getMethod !== "PLAYERNO") {
+            if (getKey >= 0 && getKey < this.listOfPlayers.length)
+                return this.listOfPlayers[getKey];
+            else
+                return 0;
+        }
+        else {
+            if (getKey >= 1 && getKey <= this.listOfPlayers.length)
+                return this.listOfPlayers[getKey - 1];
+            else
+                return 0;
+        }
+    }
+
+    getPlayerIndex(name) {
+        return this.listOfPlayers.findIndex((element) => element === name);
+    }
+
+    getPlayerNo(name) {
+        return this.listOfPlayers.findIndex((element) => element === name) + 1;
+    }
+    
+    getDealPattern() {
+        return this.dealPattern;
+    }
+
+    getNoPlayers() {
+        return this.noPlayers;
+    }
+
+    getNoPlayerCards() {
+        return this.noPlayerCards;
+    }
+
+    updateAllBids(listBids) {
+        if (listBids.length === this.listOfPlayers.length) {
+            return 100;
+        }
+    }
 }
 
 export default {GameOH};
