@@ -3,12 +3,39 @@ import deal from './deal.js';
 let consoleLog = [];
 let consoleLine = 0;
 
-test('130d: Testing the TDD Pipes', () => {
+test('Class Deal: Testing the TDD Pipes', () => {
     
     consoleLog = [];
     consoleLine = 0;
     consoleLog[consoleLine++] = "Testing the TDD pipes";
     expect(consoleLog[0]).toBe("Testing the TDD pipes");
+});
+
+test('Class Deal: Testing Condition Values', () => {
+    
+    const constNull = null;
+    const NumberOne = 1;
+    const NumberZero = 0;
+    const NumberMinusOne = -1;
+    const LetterOne = "1";
+    const LetterZero = "0";
+    const LetterMinusOne = "1";
+    const LetterA = "A";
+    const Lettera = "a";
+    const LetterSpace = " ";
+    const LetterNil = "";
+
+    expect(constNull).toBeFalsy();
+    expect(NumberOne).toBeTruthy();
+    expect(NumberZero).toBeFalsy();
+    expect(NumberMinusOne).toBeTruthy();
+    expect(LetterOne).toBeTruthy();
+    expect(LetterZero).toBeTruthy();
+    expect(LetterMinusOne).toBeTruthy();
+    expect(LetterA).toBeTruthy();
+    expect(Lettera).toBeTruthy();
+    expect(LetterSpace).toBeTruthy();
+    expect(LetterNil).toBeFalsy();
 });
 
 test('Class Deal: Does class instantiation?', () => {
