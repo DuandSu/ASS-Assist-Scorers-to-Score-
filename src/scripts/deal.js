@@ -1,8 +1,8 @@
 class Deal {
 
-    constructor (cardsDealt) {
-    // constructor (roundNo, cardsDealt) {
-        // this.roundNo = roundNo;
+    // constructor (cardsDealt) {
+    constructor (roundNo, cardsDealt) {
+        this.roundNo = roundNo;
         this.cardsDealt = cardsDealt;
         this.bid = null;
         this.made = null;
