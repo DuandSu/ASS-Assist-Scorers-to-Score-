@@ -44,9 +44,9 @@ test('Class Deal: Does class instantiation?', () => {
 
     expect(roundOne.roundNo).toBe(1);
     expect(roundOne.cardsDealt).toBe(10);
-    expect(roundOne.bidOH.getBid(0)).toBeNull();
-    expect(roundOne.bidOH.getMade(0)).toBeNull();
-    expect(roundOne.bidOH.getScore(0)).toBe(0);
+    expect(roundOne.bidOH[0].getBid(0)).toBeNull();
+    expect(roundOne.bidOH[0].getMade(0)).toBeNull();
+    expect(roundOne.bidOH[0].getScore(0)).toBe(0);
 });
 //
 // checkBid

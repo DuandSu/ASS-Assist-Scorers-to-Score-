@@ -38,38 +38,38 @@ class GameOH {
                 noDeals = noPlayerCards;
         }
         let upAdjust = 0;
-        for (let i = 0; i < noPlayers; i++) {
-            this.deals.push([]);
-            for (let j = 0; j < noPlayerCards; j++) {
-                this.deals[i].push(
-                    new deal.Deal(
-                        j + 1, // Round #
-                        startAtOne ? j + 1 : noPlayerCards - j // # of Cards
-                    )
-                );
-            }
-            upAdjust = 0;
-            if (repeatUp) {
-                upAdjust = 1;
-                this.deals[i].push(
-                    new deal.Deal(
-                        this.deals[i].length + 1, // Round #
-                        startAtOne 
-                            ? noPlayerCards + (noPlayerCards - this.deals[i].length)
-                            : this.deals[i].length + 1 - noPlayerCards // # of Cards
-                    )
-                );
-            }
-            if (continueUp) {
-                for (let j = noPlayerCards; j < noPlayerCards * 2 - 1; j++) {
-                    this.deals[i].push(
-                        new deal.Deal(
-                            j + 1 + upAdjust, // Round #
-                            startAtOne ? noPlayerCards + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards // # of Cards
+        for (let j = 0; j < noPlayerCards; j++) {
+            this.deals.push(
+                new deal.Deal(
+                    j + 1, // Round #
+                    startAtOne ? j + 1 : noPlayerCards - j, // # of Cards
+                    noPlayers // # of Players
+                )
+            );
+        }
+        upAdjust = 0;
+        if (repeatUp) {
+            upAdjust = 1;
+            this.deals.push(
+                new deal.Deal(
+                    this.deals.length + 1, // Round #
+                    startAtOne 
+                        ? noPlayerCards + (noPlayerCards - this.deals.length)
+                        : this.deals.length + 1 - noPlayerCards, // # of Cards
+                        noPlayers // # of Players
                         )
-                    );
-                }                
-            }
+            );
+        }
+        if (continueUp) {
+            for (let j = noPlayerCards; j < noPlayerCards * 2 - 1; j++) {
+                this.deals.push(
+                    new deal.Deal(
+                        j + 1 + upAdjust, // Round #
+                        startAtOne ? noPlayerCards + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards, // # of Cards
+                        noPlayers // # of Players
+                        )
+                );
+            }                
         }
     }
 
