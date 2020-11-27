@@ -45,9 +45,9 @@ test('Class Deal: Does class instantiation?', () => {
 
     expect(roundOne.roundNo).toBe(1);
     expect(roundOne.cardsDealt).toBe(10);
-    expect(roundOne.bid).toBeNull();
-    expect(roundOne.made).toBeNull();
-    expect(roundOne.points).toBe(0);
+    expect(roundOne.bidOH.getBid()).toBeNull();
+    expect(roundOne.bidOH.getMade()).toBeNull();
+    expect(roundOne.bidOH.getScore()).toBe(0);
 });
 //
 // checkBid
@@ -69,22 +69,22 @@ test('Class Deal: Method Bids', () => {
     expect(roundOne.checkBid(-11)).toBe(-1);
 
     expect(roundOne.updateBid(11)).toBe(1);
-    expect(roundOne.bid).toBeNull();
+    expect(roundOne.bidOH.getBid()).toBeNull();
     expect(roundOne.getBid()).toBeNull();
     expect(roundOne.updateBid(-1)).toBe(-1);
-    expect(roundOne.bid).toBeNull();
+    expect(roundOne.bidOH.getBid()).toBeNull();
     expect(roundOne.getBid()).toBeNull();
     expect(roundOne.updateBid(-11)).toBe(-1);
-    expect(roundOne.bid).toBeNull();
+    expect(roundOne.bidOH.getBid()).toBeNull();
     expect(roundOne.getBid()).toBeNull();
     expect(roundOne.updateBid(0)).toBe(0);
-    expect(roundOne.bid).toBe(0);
+    expect(roundOne.bidOH.getBid()).toBe(0);
     expect(roundOne.getBid()).toBe(0);
     expect(roundOne.updateBid(1)).toBe(0);
-    expect(roundOne.bid).toBe(1);
+    expect(roundOne.bidOH.getBid()).toBe(1);
     expect(roundOne.getBid()).toBe(1);
     expect(roundOne.updateBid(10)).toBe(0);
-    expect(roundOne.bid).toBe(10);
+    expect(roundOne.bidOH.getBid()).toBe(10);
     expect(roundOne.getBid()).toBe(10);
 
 });
@@ -114,21 +114,21 @@ test('Class Deal: Method Mades', () => {
     expect(roundOne.checkMade(11)).toBe(1);
 
     expect(roundOne.updateMade(-1)).toBe(-1);
-    expect(roundOne.made).toBeNull();
+    expect(roundOne.bidOH.getMade()).toBeNull();
     expect(roundOne.getMade()).toBeNull();
     expect(roundOne.updateMade(-11)).toBe(-1);
-    expect(roundOne.made).toBeNull();
+    expect(roundOne.bidOH.getMade()).toBeNull();
     expect(roundOne.getMade()).toBeNull();
     expect(roundOne.updateMade(11)).toBe(1);
-    expect(roundOne.made).toBeNull();
+    expect(roundOne.bidOH.getMade()).toBeNull();
     expect(roundOne.updateMade(0)).toBe(0);
-    expect(roundOne.made).toBe(0);
+    expect(roundOne.bidOH.getMade()).toBe(0);
     expect(roundOne.getMade()).toBe(0);
     expect(roundOne.updateMade(1)).toBe(0);
-    expect(roundOne.made).toBe(1);
+    expect(roundOne.bidOH.getMade()).toBe(1);
     expect(roundOne.getMade()).toBe(1);
     expect(roundOne.updateMade(10)).toBe(0);
-    expect(roundOne.made).toBe(10);
+    expect(roundOne.bidOH.getMade()).toBe(10);
     expect(roundOne.getMade()).toBe(10);
 });
 //
