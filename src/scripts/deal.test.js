@@ -44,6 +44,7 @@ test('Class Deal: Does class instantiation?', () => {
 
     expect(roundOne.roundNo).toBe(1);
     expect(roundOne.cardsDealt).toBe(10);
+    expect(roundOne.getCardsDealt()).toBe(10);
     expect(roundOne.bidOH[0].getBid(0)).toBeNull();
     expect(roundOne.bidOH[0].getMade(0)).toBeNull();
     expect(roundOne.bidOH[0].getScore(0)).toBe(0);
@@ -87,7 +88,26 @@ test('Class Deal: Method Bids', () => {
     expect(roundOne.updateBid(playerIdx, 10)).toBe(0);
     expect(roundOne.bidOH[playerIdx].getBid()).toBe(10);
     expect(roundOne.getBid(playerIdx)).toBe(10);
-
+    
+    expect(roundOne.getTotalBidAmt()).toBe(10);
+    
+    expect(roundOne.updateBid(0, 0)).toBe(0);
+    expect(roundOne.getBid(0)).toBe(0);
+    expect(roundOne.updateBid(1, 1)).toBe(0);
+    expect(roundOne.getBid(1)).toBe(1);
+    expect(roundOne.updateBid(2, 2)).toBe(0);
+    expect(roundOne.getBid(2)).toBe(2);
+    expect(roundOne.updateBid(3, 3)).toBe(0);
+    expect(roundOne.getBid(3)).toBe(3);
+    expect(roundOne.updateBid(4, 4)).toBe(0);
+    expect(roundOne.getBid(4)).toBe(4);
+    
+    expect(roundOne.getTotalBidAmt()).toBe(10);
+    
+    expect(roundOne.updateBid(4, 3)).toBe(0);
+    expect(roundOne.getBid(4)).toBe(3);
+    
+    expect(roundOne.getTotalBidAmt()).toBe(9);
 });
 //
 // checkMade

@@ -111,13 +111,22 @@ class GameOH {
         return this.noPlayerCards;
     }
 
-    // updateAllBids(roundNo, listBids) {
-    //     if (listBids.length === this.listOfPlayers.length) {
-    //         totalBids = listBids.reduce((total, num) => total + num);
-    //         if (totalBids < )
-    //         return 100;
-    //     }
-    // }
+    getTotalBidAmt(roundNo) {
+        return this.deals[roundNo].getTotalBidAmt();
+    }
+
+    updateAllBids(roundNo, listBids) {
+        if (listBids.length === this.listOfPlayers.length) {
+            const totalBids = listBids.reduce((total, num) => total + num);
+            if (totalBids <= this.deals[roundNo - 1].getCardsDealt()) {
+                return totalBids;
+            }
+            else
+                return -2;
+        }
+        else
+            return -1;
+    }
 }
 
 export default {GameOH};

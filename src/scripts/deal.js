@@ -14,6 +14,10 @@ class Deal {
         // new bidNode.BidNode();
     }
 
+    getCardsDealt() {
+        return this.cardsDealt;
+    }
+
     checkBid(playerIdx, bid) {
 
         return this.bidOH[playerIdx].checkBid(bid, this.cardsDealt);
@@ -36,6 +40,14 @@ class Deal {
     getBid(playerIdx) {
         return this.bidOH[playerIdx].getBid();
         // return this.bid;
+    }
+
+    getTotalBidAmt() {
+        let totalBid = 0;
+        for (let i = 0; i < this.noPlayers; i++) {
+            totalBid += this.bidOH[i].bid;
+        }
+        return totalBid;
     }
 
     checkMade(playerIdx, made) {

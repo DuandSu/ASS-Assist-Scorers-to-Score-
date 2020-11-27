@@ -624,7 +624,7 @@ test('Class gameOH: Test Misc Get Methods?', () => {
     expect(game.getNoPlayerCards()).toBe(10);
 });
 
-test('Class gameOH: Test Bid Methods?', () => {
+test('Class gameOH: Test Bidding & Scoring Methods?', () => {
 
     const gameNo = 109;
     const gameComm = "Testing Game for 10..1..1..10 Name Methods";
@@ -639,9 +639,23 @@ test('Class gameOH: Test Bid Methods?', () => {
         noPlayerCards, dealPattern, listOfPlayers
     );
 
-    let listBids = [0, 1, 2, 3, 4];
-    // expect(game.updateAllBids(listBids)).toBe(10);
+    let roundNo = 1;
+    let listBids = [];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(-1); // Error: Missing player bid.
+    
+    listBids = [0, 1, 2, 3];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(-1); // Error: Missing player bid.
+    // expect(game.updateAllBids(roundNo, listBids)).toBe(10);
+    // expect(game.getTotalBidAmt(roundNo)).toBe(6);
 
+    listBids = [0, 1, 2, 3, 5];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(-2); // Error: Bids canNOT exceed cards dealt.
+    
+    listBids = [0, 1, 2, 3, 4];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(10); // Success returns total bids for the round.
+    
+    listBids = [0, 1, 2, 3, 3];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
 });
 // Next:
 // 4. updatePlayerBid
