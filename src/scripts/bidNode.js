@@ -1,25 +1,22 @@
-class Deal {
+class BidNode {
 
-    constructor (cardsDealt) {
-    // constructor (roundNo, cardsDealt) {
-        // this.roundNo = roundNo;
-        this.cardsDealt = cardsDealt;
+    constructor () {
         this.bid = null;
         this.made = null;
         this.points = 0;
     }
 
-    checkBid(bid) {
+    checkBid(bid, cardsDealt) {
         if (bid < 0)
             return -1; // Negative Numbers NOT allowed.
-        else if (bid <= this.cardsDealt)
+        else if (bid <= cardsDealt)
             return 0; // Bids 0 to number of cards dealt is acceptable.
         else
             return 1; // CanNOT bid more than number of cards dealt.
     }
 
-    updateBid(bid) {
-        const result = this.checkBid(bid);
+    updateBid(bid, cardsDealt) {
+        const result = this.checkBid(bid, cardsDealt);
         if (result === 0) this.bid = bid;
         return result;
     }
@@ -28,19 +25,19 @@ class Deal {
         return this.bid;
     }
 
-    checkMade(made) {
+    checkMade(made, cardsDealt) {
         if (this.bid === null)
             return null; // Bid updates must always precede made updates.
         else if (made < 0)
             return -1; // Negative Numbers NOT allowed.
-        else if (made <= this.cardsDealt)
+        else if (made <= cardsDealt)
             return 0; // Make 0 to number of cards dealt is acceptable.
         else
             return 1; // CanNOT Make more than number of cards.
     }
 
-    updateMade(made) {
-        const result = this.checkMade(made);
+    updateMade(made, cardsDealt) {
+        const result = this.checkMade(made, cardsDealt);
         if (result === 0) this.made = made;
         return result;
     }
@@ -69,4 +66,4 @@ class Deal {
     }
 }
 
-export default {Deal};
+export default {BidNode};

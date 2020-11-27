@@ -1,3 +1,4 @@
+import { useReducer } from 'react/cjs/react.production.min';
 import deal from './deal.js';
 class GameOH {
     constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers) {
@@ -42,7 +43,7 @@ class GameOH {
             for (let j = 0; j < noPlayerCards; j++) {
                 this.deals[i].push(
                     new deal.Deal(
-                        j + 1, // Round #
+                        // j + 1, // Round #
                         startAtOne ? j + 1 : noPlayerCards - j // # of Cards
                     )
                 );
@@ -52,7 +53,7 @@ class GameOH {
                 upAdjust = 1;
                 this.deals[i].push(
                     new deal.Deal(
-                        this.deals[i].length + 1, // Round #
+                        // this.deals[i].length + 1, // Round #
                         startAtOne 
                             ? noPlayerCards + (noPlayerCards - this.deals[i].length)
                             : this.deals[i].length + 1 - noPlayerCards // # of Cards
@@ -63,7 +64,7 @@ class GameOH {
                 for (let j = noPlayerCards; j < noPlayerCards * 2 - 1; j++) {
                     this.deals[i].push(
                         new deal.Deal(
-                            j + 1 + upAdjust, // Round #
+                            // j + 1 + upAdjust, // Round #
                             startAtOne ? noPlayerCards + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards // # of Cards
                         )
                     );
@@ -110,11 +111,13 @@ class GameOH {
         return this.noPlayerCards;
     }
 
-    updateAllBids(listBids) {
-        if (listBids.length === this.listOfPlayers.length) {
-            return 100;
-        }
-    }
+    // updateAllBids(roundNo, listBids) {
+    //     if (listBids.length === this.listOfPlayers.length) {
+    //         totalBids = listBids.reduce((total, num) => total + num);
+    //         if (totalBids < )
+    //         return 100;
+    //     }
+    // }
 }
 
 export default {GameOH};

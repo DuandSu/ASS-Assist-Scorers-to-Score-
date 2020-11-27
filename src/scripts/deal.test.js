@@ -40,9 +40,10 @@ test('Class Deal: Testing Condition Values', () => {
 
 test('Class Deal: Does class instantiation?', () => {
 
-    const roundOne = new deal.Deal (1, 10);
+    const roundOne = new deal.Deal (10);
+    // const roundOne = new deal.Deal (1, 10);
 
-    expect(roundOne.roundNo).toBe(1);
+    // expect(roundOne.roundNo).toBe(1);
     expect(roundOne.cardsDealt).toBe(10);
     expect(roundOne.bid).toBeNull();
     expect(roundOne.made).toBeNull();
@@ -55,9 +56,10 @@ test('Class Deal: Does class instantiation?', () => {
 //
 test('Class Deal: Method Bids', () => {
 
-    const roundNo = 1;
+    // const roundNo = 1;
     const noCards = 10;
-    const roundOne = new deal.Deal (roundNo, noCards);
+    const roundOne = new deal.Deal (noCards);
+    // const roundOne = new deal.Deal (roundNo, noCards);
 
     expect(roundOne.checkBid(0)).toBe(0);
     expect(roundOne.checkBid(1)).toBe(0);
@@ -93,9 +95,11 @@ test('Class Deal: Method Bids', () => {
 //
 test('Class Deal: Method Mades', () => {
 
-    const roundNo = 1;
+    // const roundNo = 1;
     const noCards = 10;
-    const roundOne = new deal.Deal (roundNo, noCards);
+
+    const roundOne = new deal.Deal (noCards);
+    // const roundOne = new deal.Deal (roundNo, noCards);
 
     expect(roundOne.checkMade(0)).toBeNull(); // Bid is still null. Bid update must always precede updating Made.
     expect(roundOne.updateMade(-1)).toBeNull();
@@ -134,9 +138,11 @@ test('Class Deal: Method Mades', () => {
 //
 test('Class Deal: Method Scoring', () => {
 
-    const roundNo = 1;
+    // const roundNo = 1;
     const noCards = 10;
-    const roundOne = new deal.Deal (roundNo, noCards);
+
+    const roundOne = new deal.Deal (noCards);
+    // const roundOne = new deal.Deal (roundNo, noCards);
 
     expect(roundOne.score()).toBeNull(); // Score cannot be made before Bid and Made updates.
     expect(roundOne.getScore()).toBe(0);
