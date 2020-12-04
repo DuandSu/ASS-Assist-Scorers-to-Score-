@@ -998,7 +998,71 @@ test('Class gameOH: Test Score Methods?', () => {
     expect(game.getPlayerRoundScore(roundNo, 5)).toBe(22);    
     expect(game.getPlayerTotalScore(5)).toBe(122);
 });
+
+test('Class gameOH: Test Start Dealer Methods?', () => {
+
+    let gameNo = 114;
+    let gameComm = "Testing Game for Start Dealer";
+    let screwTD = false;
+    let noPlayers = 5;
+    let noPlayerCards = 10;
+    let dealPattern = "H2L2H";
+    let listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const gameRandomSD = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    let roundIdx = 0; // Round 1 - 1
+    expect(gameRandomSD.deals[roundIdx].dealer).toBeGreaterThanOrEqual(1);
+    expect(gameRandomSD.deals[roundIdx].dealer).toBeLessThanOrEqual(noPlayers); 
+
+    let startDealer = -1;
+    const gameNeg2RandomSD = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
+    );
+
+    expect(gameNeg2RandomSD.deals[roundIdx].dealer).toBeGreaterThanOrEqual(1);
+    expect(gameNeg2RandomSD.deals[roundIdx].dealer).toBeLessThanOrEqual(noPlayers);
+
+    startDealer = 6;
+    const gameMax2RandomSD = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
+    );
+
+    expect(gameMax2RandomSD.deals[roundIdx].dealer).toBeGreaterThanOrEqual(1);
+    expect(gameMax2RandomSD.deals[roundIdx].dealer).toBeLessThanOrEqual(noPlayers);
+
+    startDealer = 1;
+    const gameSD1 = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
+    );
+
+    expect(gameSD1.deals[roundIdx].dealer).toBe(1);
+
+    startDealer = 3;
+    const gameSD3 = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
+    );
+
+    expect(gameSD3.deals[roundIdx].dealer).toBe(3);
+
+    startDealer = 5;
+    const gameSD5 = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
+    );
+
+    expect(gameSD5.deals[roundIdx].dealer).toBe(5);
+});
+//
 // isScrewTD
+//
 test('Class gameOH: Test Screw The Dealer Methods?', () => {
 
     let gameNo = 112;
@@ -1023,15 +1087,37 @@ test('Class gameOH: Test Screw The Dealer Methods?', () => {
     noPlayerCards = 10;
     dealPattern = "H2L2H";
     listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+    let startPlayer = 5;
     
     const gameSTD = new gameOH.GameOH (
         gameNo, gameComm, screwTD, noPlayers, 
-        noPlayerCards, dealPattern, listOfPlayers
+        noPlayerCards, dealPattern, listOfPlayers, startPlayer
     );
 
     expect(gameSTD.isScrewTD()).toBeTruthy();
 
-});
-// Next:
+    let roundNo = 1; // Dealer is player 5. Bid Check is 10.
+    let listBids = [0, 1, 2, 3, 3]; // Dealer canNOT bid 4.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
+    
+    listBids = [0, 1, 2, 3, 4]; // Dealer canNOT bid 4.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
 
-// 15. Need to add tracking Dealer for isScrewTD mode.
+    roundNo = 2; // Dealer is player 1. Bid Check is 9.
+    listBids = [0, 1, 2, 3, 2]; // Dealer canNOT bid 1.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(8); // Success returns total bids for the round.
+    
+    listBids = [1, 1, 2, 3, 2]; // Dealer canNOT bid 1.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
+
+    roundNo = 3; // Dealer is player 2. Bid Check is 8.
+    listBids = [1, 1, 2, 3, 2]; // Dealer canNOT bid 0.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
+    
+    listBids = [1, 0, 2, 3, 2]; // Dealer canNOT bid 0.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
+
+    roundNo = 4; // Dealer is player 3. Bid Check is 7.
+    listBids = [1, 2, 3, 4, 2]; // Previous bids exceed cards dealt. Dealer no longer screwed. Dealer can bid anything.
+    expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(12); // Success returns total bids for the round.
+});
