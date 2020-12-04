@@ -131,23 +131,23 @@ class GameOH {
 
     updatePlayerBid(roundNo, playerNo, bid) {
 
-        if (this.checkPlayerBid(roundNo, playerNo, bid))
+        // if (this.checkPlayerBid(roundNo, playerNo, bid))
             return this.deals[roundNo - 1].updateBid(playerNo - 1, bid);
-        else
-            return -2;
+        // else
+        //     return -2;
     }
 
     updateAllBids(roundNo, listBids) {
         if (listBids.length === this.listOfPlayers.length) {
-            const totalBids = listBids.reduce((total, num) => total + num);
-            if (totalBids <= this.deals[roundNo - 1].getCardsDealt()) {
+            // const totalBids = listBids.reduce((total, num) => total + num);
+            // if (totalBids <= this.deals[roundNo - 1].getCardsDealt()) {
                 for (let i = 0; i < this.listOfPlayers.length; i++) {
                     this.updatePlayerBid(roundNo, i + 1, listBids[i]);
                 }
                 return this.getTotalBidAmt(roundNo);
-            }
-            else
-                return -2; // Error: Bids canNOT exceed cards dealt.
+            // }
+            // else
+            //     return -2; // Error: Bids canNOT exceed cards dealt.
         }
         else
             return -1; // Error: Missing player bid.
