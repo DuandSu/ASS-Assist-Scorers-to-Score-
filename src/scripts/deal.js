@@ -103,6 +103,14 @@ class Deal {
         return this.bidOH[playerIdx].getScore();
         // return this.points;
     }
+
+    getTotalScore () {
+        let totalScore = 0;
+        for (let i = 0; i < this.noPlayers; i++) {
+            totalScore += this.bidOH[i].points;
+        }
+        return totalScore;        
+    }
 }
 
 export default {Deal};

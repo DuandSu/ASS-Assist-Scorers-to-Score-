@@ -685,10 +685,10 @@ test('Class gameOH: Test Bid Methods?', () => {
 // checkPlayerMade
 // updateAllMade
 // getTotalMadeAmt
-test('Class gameOH: Test Made and Score Methods?', () => {
+test('Class gameOH: Test Made Methods?', () => {
 
     const gameNo = 110;
-    const gameComm = "Testing Game for 10..1..1..10 Made and Score Methods";
+    const gameComm = "Testing Game for 10..1..1..10 Made Methods";
     const screwTD = false;
     const noPlayers = 5;
     const noPlayerCards = 10;
@@ -742,14 +742,112 @@ test('Class gameOH: Test Made and Score Methods?', () => {
     expect(game.getPlayerMade(roundNo, playerToMade)).toBe(5);
     expect(game.getTotalMadeAmt(roundNo)).toBe(10);
 
-
 });
-// Next:
-
-// 9. updateAllMadeAndScore
-// 10. scorePlayer
+// updateAllScores
+// updatePlayerScore
 // 11. getPlayerScore
 // 12. getPlayerScoreRound
-// 13. getPlayerScoreTotal
+// getTotalScore
+test('Class gameOH: Test Score Methods?', () => {
+
+    const gameNo = 110;
+    const gameComm = "Testing Game for 10..1..1..10 Score Methods";
+    const screwTD = false;
+    const noPlayers = 5;
+    const noPlayerCards = 10;
+    const dealPattern = "H2L2H";
+    const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    let roundNo = 1;
+    let listBids = [0, 1, 2, 3, 4];
+    let listMade = [0, 1, 2, 3, 4];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(10); // Success returns total bids for the round.
+    expect(game.updateAllMade(roundNo, listMade)).toBe(10); // Success returns total made for the round.
+    expect(game.updateAllScores(roundNo)).toBe(10+11+22+33+44); // Success returns total points for the round.
+    expect(game.getTotalScore(roundNo)).toBe(10+11+22+33+44);
+    expect(game.getPlayerRoundScore(roundNo, 1)).toBe(10);
+    expect(game.getPlayerTotalScore(1)).toBe(10);
+    expect(game.getPlayerRoundScore(roundNo, 2)).toBe(11);
+    expect(game.getPlayerTotalScore(2)).toBe(11);
+    expect(game.getPlayerRoundScore(roundNo, 3)).toBe(22);
+    expect(game.getPlayerTotalScore(2)).toBe(11);
+    expect(game.getPlayerRoundScore(roundNo, 4)).toBe(33);
+    expect(game.getPlayerTotalScore(4)).toBe(33);
+    expect(game.getPlayerRoundScore(roundNo, 5)).toBe(44);
+    expect(game.getPlayerTotalScore(5)).toBe(44);
+    
+    listMade = [0, 1, 0, 4, 5];
+    expect(game.updateAllMade(roundNo, listMade)).toBe(10);
+    expect(game.updateAllScores(roundNo)).toBe(10+11+0+4+5); 
+    expect(game.getTotalScore(roundNo)).toBe(10+11+0+4+5);
+    expect(game.getPlayerRoundScore(roundNo, 1)).toBe(10);
+    expect(game.getPlayerTotalScore(1)).toBe(10);
+    expect(game.getPlayerRoundScore(roundNo, 2)).toBe(11);
+    expect(game.getPlayerTotalScore(2)).toBe(11);
+    expect(game.getPlayerRoundScore(roundNo, 3)).toBe(0);
+    expect(game.getPlayerTotalScore(3)).toBe(0);
+    expect(game.getPlayerRoundScore(roundNo, 4)).toBe(4);
+    expect(game.getPlayerTotalScore(4)).toBe(4);
+    expect(game.getPlayerRoundScore(roundNo, 5)).toBe(5);    
+    expect(game.getPlayerTotalScore(5)).toBe(5);
+
+    roundNo = 2;
+    listBids = [0, 1, 2, 3, 3];
+    listMade = [0, 1, 2, 3, 3];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
+    expect(game.updateAllMade(roundNo, listMade)).toBe(9); // Success returns total made for the round.
+    expect(game.updateAllScores(roundNo)).toBe(10+11+22+33+33); // Success returns total points for the round.
+    expect(game.getPlayerRoundScore(roundNo, 1)).toBe(10);
+    expect(game.getPlayerTotalScore(1)).toBe(20);
+    expect(game.getPlayerRoundScore(roundNo, 2)).toBe(11);
+    expect(game.getPlayerTotalScore(2)).toBe(22);
+    expect(game.getPlayerRoundScore(roundNo, 3)).toBe(22);
+    expect(game.getPlayerTotalScore(3)).toBe(22);
+    expect(game.getPlayerRoundScore(roundNo, 4)).toBe(33);
+    expect(game.getPlayerTotalScore(4)).toBe(37);
+    expect(game.getPlayerRoundScore(roundNo, 5)).toBe(33);    
+    expect(game.getPlayerTotalScore(5)).toBe(38);
+    
+    roundNo = 3;
+    listBids = [1, 1, 1, 1, 1];
+    listMade = [1, 2, 3, 2, 0];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(5); // Success returns total bids for the round.
+    expect(game.updateAllMade(roundNo, listMade)).toBe(8); // Success returns total made for the round.
+    expect(game.updateAllScores(roundNo)).toBe(11+2+3+2+0); // Success returns total points for the round.
+    expect(game.getPlayerRoundScore(roundNo, 1)).toBe(11);
+    expect(game.getPlayerTotalScore(1)).toBe(31);
+    expect(game.getPlayerRoundScore(roundNo, 2)).toBe(2);
+    expect(game.getPlayerTotalScore(2)).toBe(24);
+    expect(game.getPlayerRoundScore(roundNo, 3)).toBe(3);
+    expect(game.getPlayerTotalScore(3)).toBe(25);
+    expect(game.getPlayerRoundScore(roundNo, 4)).toBe(2);
+    expect(game.getPlayerTotalScore(4)).toBe(39);
+    expect(game.getPlayerRoundScore(roundNo, 5)).toBe(0);    
+    expect(game.getPlayerTotalScore(5)).toBe(38);
+
+        
+    roundNo = 4;
+    listBids = [3, 4, 5, 6, 7];
+    listMade = [0, 1, 2, 4, 0];
+    // expect(game.updateAllBids(roundNo, listBids)).toBe(25); // Success returns total bids for the round.
+    // expect(game.updateAllMade(roundNo, listMade)).toBe(8); // Success returns total made for the round.
+    // expect(game.updateAllScores(roundNo)).toBe(11+2+3+2+0); // Success returns total points for the round.
+    // expect(game.getPlayerRoundScore(roundNo, 1)).toBe(11);
+    // expect(game.getPlayerTotalScore(1)).toBe(31);
+    // expect(game.getPlayerRoundScore(roundNo, 2)).toBe(2);
+    // expect(game.getPlayerTotalScore(2)).toBe(24);
+    // expect(game.getPlayerRoundScore(roundNo, 3)).toBe(3);
+    // expect(game.getPlayerTotalScore(3)).toBe(25);
+    // expect(game.getPlayerRoundScore(roundNo, 4)).toBe(2);
+    // expect(game.getPlayerTotalScore(4)).toBe(39);
+    // expect(game.getPlayerRoundScore(roundNo, 5)).toBe(0);    
+    // expect(game.getPlayerTotalScore(5)).toBe(38);
+});
+// Next:
 // 14. isScrewTD
 // 15. Need to add tracking Dealer for isScrewTD mode.

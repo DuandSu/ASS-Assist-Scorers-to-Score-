@@ -194,6 +194,39 @@ class GameOH {
         else
             return -1; // Error: Missing player bid.
     }
+
+    getTotalScore(roundNo) {
+        return this.deals[roundNo-1].getTotalScore();
+    }
+    
+    getPlayerRoundScore(roundNo, playerNo) {
+        return this.deals[roundNo-1].getScore(playerNo - 1);
+    }
+
+    getPlayerTotalScore(playerNo) {
+        let totalPoints = 0;
+        for (let i = 0; i < this.deals.length; i++) {
+            totalPoints += this.getPlayerRoundScore(i + 1, playerNo);
+        }
+        return totalPoints;
+    }
+
+    updatePlayerScore(roundNo, playerNo) {
+
+        // if (this.checkPlayerMade(roundNo, playerNo, made))
+            return this.deals[roundNo - 1].score(playerNo - 1)
+        // else
+        //     return -2;
+    }
+
+    updateAllScores(roundNo) {
+        for (let i = 0; i < this.listOfPlayers.length; i++) {
+            this.updatePlayerScore(roundNo, i + 1);
+        }
+        return this.getTotalScore(roundNo);
+        
+        // return 120;
+    }
 }
 
 
