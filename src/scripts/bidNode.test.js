@@ -59,11 +59,11 @@ test('Class BidNode: Method Bids', () => {
     expect(bidOH.checkBid(0, noCards)).toBe(0);
     expect(bidOH.checkBid(1, noCards)).toBe(0);
     expect(bidOH.checkBid(10, noCards)).toBe(0);
-    expect(bidOH.checkBid(11, noCards)).toBe(1);
+    expect(bidOH.checkBid(11, noCards)).toBe(-2);
     expect(bidOH.checkBid(-1, noCards)).toBe(-1);
     expect(bidOH.checkBid(-11, noCards)).toBe(-1);
 
-    expect(bidOH.updateBid(11, noCards)).toBe(1);
+    expect(bidOH.updateBid(11, noCards)).toBe(-2);
     expect(bidOH.bid).toBeNull();
     expect(bidOH.getBid()).toBeNull();
     expect(bidOH.updateBid(-1, noCards)).toBe(-1);

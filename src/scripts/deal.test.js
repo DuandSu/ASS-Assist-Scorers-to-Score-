@@ -66,11 +66,11 @@ test('Class Deal: Method Bids', () => {
     expect(roundOne.checkBid(playerIdx, 0)).toBe(0);
     expect(roundOne.checkBid(playerIdx, 1)).toBe(0);
     expect(roundOne.checkBid(playerIdx, 10)).toBe(0);
-    expect(roundOne.checkBid(playerIdx, 11)).toBe(1);
+    expect(roundOne.checkBid(playerIdx, 11)).toBe(-2);
     expect(roundOne.checkBid(playerIdx, -1)).toBe(-1);
     expect(roundOne.checkBid(playerIdx, -11)).toBe(-1);
 
-    expect(roundOne.updateBid(playerIdx, 11)).toBe(1);
+    expect(roundOne.updateBid(playerIdx, 11)).toBe(-2);
     expect(roundOne.bidOH[playerIdx].getBid()).toBeNull();
     expect(roundOne.getBid(playerIdx)).toBeNull();
     expect(roundOne.updateBid(playerIdx, -1)).toBe(-1);
@@ -144,7 +144,7 @@ test('Class Deal: Method Mades', () => {
     expect(roundOne.getMade(playerIdx)).toBeNull();
     expect(roundOne.updateMade(playerIdx, 11)).toBe(1);
     expect(roundOne.bidOH[playerIdx].getMade()).toBeNull();
-    
+
     expect(roundOne.updateMade(playerIdx, 0)).toBe(0);
     expect(roundOne.bidOH[playerIdx].getMade(playerIdx)).toBe(0);
     expect(roundOne.getMade(playerIdx)).toBe(0);

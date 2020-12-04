@@ -651,6 +651,12 @@ test('Class gameOH: Test Bid Methods?', () => {
     
     listBids = [0, 1, 2, 3];
     expect(game.updateAllBids(roundNo, listBids)).toBe(-1); // Error: Missing player bid.
+    
+    listBids = [0, 1, 2, 3, 20];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(-2); // Error: Player canNOT bid more than cards dealt.
+    
+    listBids = [0, 1, 2, 3, 10];
+    expect(game.updateAllBids(roundNo, listBids)).toBe(16); // Success returns total bids for the round.
 
     listBids = [0, 1, 2, 3, 5];
     expect(game.updateAllBids(roundNo, listBids)).toBe(11); // Success returns total bids for the round.
@@ -967,9 +973,9 @@ test('Class gameOH: Test Score Methods?', () => {
     expect(game.getPlayerTotalScore(5)).toBe(100);
 
     roundNo = 12;
-    listBids = [20, 1, 1, 0, 2];
+    listBids = [3, 1, 1, 0, 2]; // FIX ME!!!
     listMade = [0, 0, 1, 0, 2];
-    expect(game.updateAllBids(roundNo, listBids)).toBe(24); // Success returns total bids for the round.
+    expect(game.updateAllBids(roundNo, listBids)).toBe(7); // Success returns total bids for the round.
     expect(game.updateAllMade(roundNo, listMade)).toBe(3); // Success returns total made for the round.
     expect(game.updateAllScores(roundNo)).toBe(0+0+11+10+22); // Success returns total points for the round.
     expect(game.getPlayerRoundScore(roundNo, 1)).toBe(0);

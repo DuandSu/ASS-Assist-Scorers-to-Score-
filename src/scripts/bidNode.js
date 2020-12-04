@@ -12,7 +12,8 @@ class BidNode {
         else if (bid <= cardsDealt)
             return 0; // Bids 0 to number of cards dealt is acceptable.
         else
-            return 1; // CanNOT bid more than number of cards dealt.
+            return -2; // CanNOT bid more than number of cards dealt.
+            // return 1; // CanNOT bid more than number of cards dealt.
     }
 
     updateBid(bid, cardsDealt) {

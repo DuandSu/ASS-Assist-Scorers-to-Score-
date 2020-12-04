@@ -141,8 +141,11 @@ class GameOH {
         if (listBids.length === this.listOfPlayers.length) {
             // const totalBids = listBids.reduce((total, num) => total + num);
             // if (totalBids <= this.deals[roundNo - 1].getCardsDealt()) {
+                let bidOK = 0;
                 for (let i = 0; i < this.listOfPlayers.length; i++) {
-                    this.updatePlayerBid(roundNo, i + 1, listBids[i]);
+                    bidOK = this.updatePlayerBid(roundNo, i + 1, listBids[i]);
+                    // console.log("BidOK = " + bidOK + " for " + listBids[i]);
+                    if (bidOK < 0) return bidOK;
                 }
                 return this.getTotalBidAmt(roundNo);
             // }
