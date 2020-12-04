@@ -74,6 +74,14 @@ class Deal {
         // return this.made;
     }
 
+    getTotalMadeAmt() {
+        let totalMade = 0;
+        for (let i = 0; i < this.noPlayers; i++) {
+            totalMade += this.bidOH[i].made;
+        }
+        return totalMade;
+    }
+
     score(playerIdx) {
 
         return this.bidOH[playerIdx].score();

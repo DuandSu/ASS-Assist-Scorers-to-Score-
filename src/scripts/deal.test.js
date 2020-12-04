@@ -144,15 +144,22 @@ test('Class Deal: Method Mades', () => {
     expect(roundOne.getMade(playerIdx)).toBeNull();
     expect(roundOne.updateMade(playerIdx, 11)).toBe(1);
     expect(roundOne.bidOH[playerIdx].getMade()).toBeNull();
+    
     expect(roundOne.updateMade(playerIdx, 0)).toBe(0);
     expect(roundOne.bidOH[playerIdx].getMade(playerIdx)).toBe(0);
     expect(roundOne.getMade(playerIdx)).toBe(0);
+    expect(roundOne.getTotalMadeAmt()).toBe(0);
+
     expect(roundOne.updateMade(playerIdx, 1)).toBe(0);
     expect(roundOne.bidOH[playerIdx].getMade()).toBe(1);
     expect(roundOne.getMade(playerIdx)).toBe(1);
+    expect(roundOne.getTotalMadeAmt()).toBe(1);
+
     expect(roundOne.updateMade(playerIdx, 10)).toBe(0);
     expect(roundOne.bidOH[playerIdx].getMade()).toBe(10);
     expect(roundOne.getMade(playerIdx)).toBe(10);
+    expect(roundOne.getTotalMadeAmt()).toBe(10);
+
 });
 //
 // Next:

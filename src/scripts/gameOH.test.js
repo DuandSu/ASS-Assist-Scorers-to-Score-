@@ -680,7 +680,11 @@ test('Class gameOH: Test Bid Methods?', () => {
     expect(game.getPlayerBid(roundNo, playerToBid)).toBe(1);
     expect(game.getTotalBidAmt(roundNo)).toBe(8);
 });
-
+// updatePlayerMade
+// getPlayerMade
+// checkPlayerMade
+// updateAllMade
+// getTotalMadeAmt
 test('Class gameOH: Test Made and Score Methods?', () => {
 
     const gameNo = 110;
@@ -700,44 +704,48 @@ test('Class gameOH: Test Made and Score Methods?', () => {
     let listBids = [0, 1, 2, 3, 4];
     let listMade = [];
 
-    // expect(game.updateAllBids(roundNo, listBids)).toBe(-1); // Error: Missing player bid.
+    expect(game.updateAllMade(roundNo, listMade)).toBe(-1); // Error: Missing player made.
     
-    // listBids = [0, 1, 2, 3];
-    // expect(game.updateAllBids(roundNo, listBids)).toBe(-1); // Error: Missing player bid.
+    listMade = [0, 1, 2, 3];
+    expect(game.updateAllMade(roundNo, listMade)).toBe(-1); // Error: Missing player made.
 
-    // listBids = [0, 1, 2, 3, 5];
-    // expect(game.updateAllBids(roundNo, listBids)).toBe(-2); // Error: Bids canNOT exceed cards dealt.
+    listMade = [0, 1, 2, 3, 5];
+    expect(game.updateAllMade(roundNo, listMade)).toBe(-2); // Error: Mades must equal cards dealt.
     
-    // listBids = [0, 1, 2, 3, 4];
-    // expect(game.updateAllBids(roundNo, listBids)).toBe(10); // Success returns total bids for the round.
-    // expect(game.getTotalBidAmt(roundNo)).toBe(10);
+    listMade = [0, 1, 2, 3, 3];
+    expect(game.updateAllMade(roundNo, listMade)).toBe(-2); // Error: Mades must equal cards dealt.
+
+    listMade = [0, 1, 2, 3, 4];
+    expect(game.updateAllMade(roundNo, listMade)).toBe(0); // Not updated: Bids must precede made.
+
+    expect(game.updateAllBids(roundNo, listBids)).toBe(10); // Success returns total bids for the round.
+    expect(game.updateAllMade(roundNo, listMade)).toBe(10); // Success returns total made for the round.
+    expect(game.getTotalMadeAmt(roundNo)).toBe(10);
+
+    let playerToMade = 2;
+    let newMade = 10;
+    expect (game.checkPlayerMade(roundNo, playerToMade, newMade)).toBeFalsy();
     
-    // listBids = [0, 1, 2, 3, 3];
-    // expect(game.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
-    // expect(game.getTotalBidAmt(roundNo)).toBe(9);
+    newMade = 2;
+    expect (game.checkPlayerMade(roundNo, playerToMade, newMade)).toBeFalsy();
     
-    // let playerToBid = 2;
-    // let newBid = 10;
-    // expect (game.checkPlayerBid(roundNo, playerToBid, newBid)).toBeFalsy();
+    newMade = 0;
+    expect (game.checkPlayerMade(roundNo, playerToMade, newMade)).toBeTruthy();
+    expect(game.updatePlayerMade(roundNo, playerToMade, newMade)).toBe(0);
+    expect(game.getPlayerMade(roundNo, playerToMade)).toBe(0);
+    expect(game.getTotalMadeAmt(roundNo)).toBe(9);
     
-    // newBid = 2;
-    // expect (game.checkPlayerBid(roundNo, playerToBid, newBid)).toBeTruthy();
-    // expect(game.updatePlayerBid(roundNo, playerToBid, newBid)).toBe(0);
-    // expect(game.getPlayerBid(roundNo, playerToBid)).toBe(2);
-    // expect(game.getTotalBidAmt(roundNo)).toBe(10);
-    
-    // playerToBid = 4;
-    // newBid = 1; 
-    // expect (game.checkPlayerBid(roundNo, playerToBid, newBid)).toBeTruthy();
-    // expect(game.updatePlayerBid(roundNo, playerToBid, newBid)).toBe(0);
-    // expect(game.getPlayerBid(roundNo, playerToBid)).toBe(1);
-    // expect(game.getTotalBidAmt(roundNo)).toBe(8);
+    playerToMade = 5;
+    newMade = 5; 
+    expect (game.checkPlayerMade(roundNo, playerToMade, newMade)).toBeTruthy();
+    expect(game.updatePlayerMade(roundNo, playerToMade, newMade)).toBe(0);
+    expect(game.getPlayerMade(roundNo, playerToMade)).toBe(5);
+    expect(game.getTotalMadeAmt(roundNo)).toBe(10);
 
 
 });
 // Next:
-// 7. updatePlayerMade
-// 8. getPlayerMade
+
 // 9. updateAllMadeAndScore
 // 10. scorePlayer
 // 11. getPlayerScore

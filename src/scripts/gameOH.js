@@ -151,7 +151,50 @@ class GameOH {
         }
         else
             return -1; // Error: Missing player bid.
+        }
+
+    getTotalMadeAmt(roundNo) {
+        return this.deals[roundNo-1].getTotalMadeAmt();
+    }
+
+    getPlayerMade(roundNo, playerNo, made) {
+        return this.deals[roundNo - 1].getMade(playerNo - 1);
+    }
+
+    checkPlayerMade(roundNo, playerNo, made) {
+        const totalCurMade = this.getTotalMadeAmt(roundNo);
+        const playerCurMade = this.getPlayerMade(roundNo, playerNo, made);
+        const totalNewMade = totalCurMade - playerCurMade + made;
+        if (totalNewMade <= this.deals[roundNo - 1].getCardsDealt())
+            return true;
+        else
+            return false;
+    }
+
+    updatePlayerMade(roundNo, playerNo, made) {
+
+        if (this.checkPlayerMade(roundNo, playerNo, made))
+            return this.deals[roundNo - 1].updateMade(playerNo - 1, made)
+        else
+            return -2;
+    }
+
+    updateAllMade(roundNo, listMade) {
+        if (listMade.length === this.listOfPlayers.length) {
+            const totalMade = listMade.reduce((total, num) => total + num);
+            if (totalMade === this.deals[roundNo - 1].getCardsDealt()) {
+                for (let i = 0; i < this.listOfPlayers.length; i++) {
+                    this.updatePlayerMade(roundNo, i + 1, listMade[i]);
+                }
+                return this.getTotalMadeAmt(roundNo);
+            }
+            else
+                return -2; // Error: Bids canNOT exceed cards dealt.
+        }
+        else
+            return -1; // Error: Missing player bid.
     }
 }
+
 
 export default {GameOH};
