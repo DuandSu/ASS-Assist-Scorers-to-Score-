@@ -2,16 +2,16 @@ import bidNode from "./bidNode";
 
 class Deal {
 
-    constructor (roundNo, cardsDealt, noPlayers) {
+    constructor (roundNo, cardsDealt, noPlayers, dealer) {
         this.roundNo = roundNo;
         this.cardsDealt = cardsDealt;
         this.noPlayers = noPlayers;
+        this.dealer = dealer;
         this.bidOH = [];
 
         for (let i = 0; i < this.noPlayers; i++) {
             this.bidOH.push(new bidNode.BidNode());
         }
-        // new bidNode.BidNode();
     }
 
     getCardsDealt() {

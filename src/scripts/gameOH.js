@@ -1,7 +1,7 @@
 import { useReducer } from 'react/cjs/react.production.min';
 import deal from './deal.js';
 class GameOH {
-    constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers) {
+    constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers, startDealer) {
         this.gameNo = gameNo;
         this.gameComm = gameComm;
         this.screwTD = screwTD;
@@ -10,6 +10,12 @@ class GameOH {
         this.dealPattern = dealPattern;
         this.listOfPlayers = listOfPlayers;
         this.deals = [];
+
+        let sDealer = 0;
+        if (typeof startDealer === 'undefined' || startDealer > this.noPlayers || startDealer < 1)
+            sDealer = Math.floor(Math.random() * this.noPlayers);
+        else
+            sDealer = startDealer;
 
         let startAtOne = true;
         let continueUp = true;
@@ -43,9 +49,15 @@ class GameOH {
                 new deal.Deal(
                     j + 1, // Round #
                     startAtOne ? j + 1 : noPlayerCards - j, // # of Cards
-                    noPlayers // # of Players
+                    noPlayers, // # of Players
+                    sDealer // Dealer for the round
                 )
             );
+            // sDealer = ((sDealer === this.noPlayers) ? 1 : sDealer++);
+            if (sDealer === this.noPlayers) 
+                sDealer = 1;
+            else
+                sDealer++;
         }
         upAdjust = 0;
         if (repeatUp) {
@@ -109,6 +121,10 @@ class GameOH {
 
     getNoPlayerCards() {
         return this.noPlayerCards;
+    }
+
+    isScrewTD() {
+        return this.screwTD;
     }
 
     getTotalBidAmt(roundNo) {

@@ -102,13 +102,14 @@ test('Class gameOH: Test Deal Pattern H2L instantiation?', () => {
     const noPlayerCards = 10;
     const dealPattern = "H2L";
     const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+    const startDealer = 1;
 
     const game10To1 = new gameOH.GameOH (
         gameNo, gameComm, screwTD, noPlayers, 
-        noPlayerCards, dealPattern, listOfPlayers
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
     );
 
-    console.table(game10To1.deals);
+    // console.table(game10To1.deals);
 
     expect(game10To1.gameNo).toBe(101);
     expect(game10To1.gameComm).toBe("Test Game for 10..1");
@@ -123,11 +124,13 @@ test('Class gameOH: Test Deal Pattern H2L instantiation?', () => {
     let playerIdx = 0; // Player 1 - 1
     expect(game10To1.deals[roundIdx].roundNo).toBe(1);
     expect(game10To1.deals[roundIdx].cardsDealt).toBe(10);
+    expect(game10To1.deals[roundIdx].dealer).toBe(1);
     expect(game10To1.deals[roundIdx].getScore(playerIdx)).toBe(0);
-
+    
     roundIdx = 9; // Player 10 - 1
     expect(game10To1.deals[roundIdx].roundNo).toBe(10);
     expect(game10To1.deals[roundIdx].cardsDealt).toBe(1);
+    expect(game10To1.deals[roundIdx].dealer).toBe(5);
     expect(game10To1.deals[roundIdx].getScore(playerIdx)).toBe(0);
 
     roundIdx = 0; // Round 1 - 1
@@ -151,10 +154,11 @@ test('Class gameOH: Test Deal Pattern L2H instantiation?', () => {
     const noPlayerCards = 9;
     const dealPattern = "L2H";
     const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+    const startDealer = 2;
 
     const game1To9 = new gameOH.GameOH (
         gameNo, gameComm, screwTD, noPlayers, 
-        noPlayerCards, dealPattern, listOfPlayers
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
     );
 
     expect(game1To9.gameNo).toBe(102);
@@ -170,11 +174,13 @@ test('Class gameOH: Test Deal Pattern L2H instantiation?', () => {
     let playerIdx = 0; // Player 1 - 1
     expect(game1To9.deals[roundIdx].roundNo).toBe(1);
     expect(game1To9.deals[roundIdx].cardsDealt).toBe(1);
+    expect(game1To9.deals[roundIdx].dealer).toBe(2);
     expect(game1To9.deals[roundIdx].getScore(playerIdx)).toBe(0);
-
+    
     roundIdx = 8; // Round 9 - 1
     expect(game1To9.deals[roundIdx].roundNo).toBe(9);
     expect(game1To9.deals[roundIdx].cardsDealt).toBe(9);
+    expect(game1To9.deals[roundIdx].dealer).toBe(5);
     expect(game1To9.deals[roundIdx].getScore(playerIdx)).toBe(0);
 
     roundIdx = 0; // Round 1 - 1
@@ -197,10 +203,11 @@ test('Class gameOH: Test Deal Pattern H2L2H instantiation?', () => {
     const noPlayerCards = 10;
     const dealPattern = "H2L2H";
     const listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+    const startDealer = 3;
 
     const game10To1To10 = new gameOH.GameOH (
         gameNo, gameComm, screwTD, noPlayers, 
-        noPlayerCards, dealPattern, listOfPlayers
+        noPlayerCards, dealPattern, listOfPlayers, startDealer
     );
 
     expect(game10To1To10.gameNo).toBe(103);
@@ -216,11 +223,13 @@ test('Class gameOH: Test Deal Pattern H2L2H instantiation?', () => {
     let playerIdx = 0; // Player 1 - 1
     expect(game10To1To10.deals[roundIdx].roundNo).toBe(1);
     expect(game10To1To10.deals[roundIdx].cardsDealt).toBe(10);
+    expect(game10To1To10.deals[roundIdx].dealer).toBe(3);
     expect(game10To1To10.deals[roundIdx].getScore(playerIdx)).toBe(0);
-
+    
     roundIdx = 9; // Round 10 - 1
     expect(game10To1To10.deals[roundIdx].roundNo).toBe(10);
     expect(game10To1To10.deals[roundIdx].cardsDealt).toBe(1);
+    expect(game10To1To10.deals[roundIdx].dealer).toBe(2);
     expect(game10To1To10.deals[roundIdx].getScore(playerIdx)).toBe(0);
 
     roundIdx = 10; // Round 11 - 1
@@ -751,12 +760,12 @@ test('Class gameOH: Test Made Methods?', () => {
 });
 // updateAllScores
 // updatePlayerScore
-// 11. getPlayerScore
-// 12. getPlayerScoreRound
 // getTotalScore
+// getPlayerRoundScore
+// getPlayerTotalScore
 test('Class gameOH: Test Score Methods?', () => {
 
-    const gameNo = 110;
+    const gameNo = 111;
     const gameComm = "Testing Game for 10..1..10 Score Methods";
     const screwTD = false;
     const noPlayers = 5;
@@ -973,7 +982,7 @@ test('Class gameOH: Test Score Methods?', () => {
     expect(game.getPlayerTotalScore(5)).toBe(100);
 
     roundNo = 12;
-    listBids = [3, 1, 1, 0, 2]; // FIX ME!!!
+    listBids = [3, 1, 1, 0, 2];
     listMade = [0, 0, 1, 0, 2];
     expect(game.updateAllBids(roundNo, listBids)).toBe(7); // Success returns total bids for the round.
     expect(game.updateAllMade(roundNo, listMade)).toBe(3); // Success returns total made for the round.
@@ -989,6 +998,40 @@ test('Class gameOH: Test Score Methods?', () => {
     expect(game.getPlayerRoundScore(roundNo, 5)).toBe(22);    
     expect(game.getPlayerTotalScore(5)).toBe(122);
 });
+// isScrewTD
+test('Class gameOH: Test Screw The Dealer Methods?', () => {
+
+    let gameNo = 112;
+    let gameComm = "Testing Game for NOT Screw the Deal Methods";
+    let screwTD = false;
+    let noPlayers = 5;
+    let noPlayerCards = 10;
+    let dealPattern = "H2L2H";
+    let listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+
+    const game = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    expect(game.isScrewTD()).toBeFalsy();
+    
+    gameNo = 113;
+    gameComm = "Testing Game for Screw the Dealer Methods";
+    screwTD = true;
+    noPlayers = 5;
+    noPlayerCards = 10;
+    dealPattern = "H2L2H";
+    listOfPlayers = ["Duane", "Suzanne", "Sasha", "Christopher", "Joseph"];
+    
+    const gameSTD = new gameOH.GameOH (
+        gameNo, gameComm, screwTD, noPlayers, 
+        noPlayerCards, dealPattern, listOfPlayers
+    );
+
+    expect(gameSTD.isScrewTD()).toBeTruthy();
+
+});
 // Next:
-// 14. isScrewTD
+
 // 15. Need to add tracking Dealer for isScrewTD mode.
