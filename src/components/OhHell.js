@@ -12,6 +12,7 @@ class OhHell extends React.Component {
         this.onInputChange = this.onInputChange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
         this.state = {
+            OHMode: "Setup",
             msgArea: this.props.sMessageArea,
             inputGameNo: 11020,
             inputGameComm: "Feel free to enter FUN comments for this game!",
@@ -120,6 +121,9 @@ class OhHell extends React.Component {
     onSubmitForm() {
         if (this.passedInputNoPlayers && this.passedInputNoPlayers) {
             console.log(this.state)
+            this.setState({
+                OHMode: "Scoring"          
+            });            
         }
         else {
             if (!this.passedInputNoPlayers) {
@@ -136,15 +140,10 @@ class OhHell extends React.Component {
     }
     
     render() {
-
-        return (
-            <div>
-                <header className="App-Header">
-                    <button className="App-Buttons">Menu</button>
-                    <h1>Welcome to Oh Hell Scoring!</h1>
-                    <button className="App-Buttons">Login</button>
-                    <br></br>
-                </header>
+        
+        let OHComp = [];
+        if (this.state.OHMode === "Setup") {
+            OHComp.push(
                 <OHGameSetup 
                         inputGameNo={this.state.inputGameNo}
                         inputGameComm={this.state.inputGameComm}
@@ -156,7 +155,23 @@ class OhHell extends React.Component {
                         screwTD = {this.screwTheDealer}
                         onChange={this.onInputChange}
                         onSubmit={this.onSubmitForm}
-                />
+                />);
+        }
+        else {
+            OHComp.push(
+                <div><h1>Time to build the scoring component!</h1></div>
+            );
+        }
+
+        return (
+            <div>
+                <header className="App-Header">
+                    <button className="App-Buttons">Menu</button>
+                    <h1>Welcome to Oh Hell Scoring!</h1>
+                    <button className="App-Buttons">Login</button>
+                    <br></br>
+                </header>
+                {OHComp}
                 <div className="App-Games">
                     <p className="Message-Area">{this.state.msgArea}</p>
                 </div>
