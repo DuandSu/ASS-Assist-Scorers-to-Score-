@@ -1,6 +1,7 @@
 import React from 'react';
 import './OhHell.css';
 import OHGameSetup from './OHGameSetup';
+import OHScoring from './OHScoring';
 
 class OhHell extends React.Component {
 
@@ -159,8 +160,18 @@ class OhHell extends React.Component {
         }
         else {
             OHComp.push(
-                <div><h1>Time to build the scoring component!</h1></div>
-            );
+                <OHScoring 
+                        inputGameNo={this.state.inputGameNo}
+                        inputGameComm={this.state.inputGameComm}
+                        inputNoPlayers={this.state.inputNoPlayers}
+                        inputNoPlayerCards={this.state.inputNoPlayerCards}
+                        dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
+                        defValue={this.state.dealPatternSelect}
+                        listOfPlayers={this.state.inputPlayer}
+                        screwTD = {this.screwTheDealer}
+                        onChange={this.onInputChange}
+                        onSubmit={this.onSubmitForm}
+                />);
         }
 
         return (
