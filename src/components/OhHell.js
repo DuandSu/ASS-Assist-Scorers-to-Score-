@@ -153,6 +153,7 @@ class OhHell extends React.Component {
                         dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
                         defValue={this.state.dealPatternSelect}
                         listOfPlayers={this.state.inputPlayer}
+                        screwTD = {this.screwTheDealer}
                         onChange={this.onInputChange}
                         onSubmit={this.onSubmitForm}
                 />

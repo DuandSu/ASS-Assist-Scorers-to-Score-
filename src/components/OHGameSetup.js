@@ -59,11 +59,15 @@ function OHGameSetup(props) {
                 onChange={props.onChange}
             />
             <br></br>
-            <OHDealer
-                listOfPlayers={props.listOfPlayers}
-                onChange={props.onChange}
-            />
-            <br></br>
+            {props.screwTD &&
+            <div>
+                <OHDealer
+                    listOfPlayers={props.listOfPlayers}
+                    onChange={props.onChange}
+                />
+                <br></br>
+            </div>
+            }
             <button type="button" onClick={props.onSubmit}>Create</button>
             <button type="button" onClick={props.onSubmit}>Cancel</button>          
         </div>
