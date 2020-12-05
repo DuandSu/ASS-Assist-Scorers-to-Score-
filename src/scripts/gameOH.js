@@ -1,4 +1,4 @@
-import { useReducer } from 'react/cjs/react.production.min';
+// import { useReducer } from 'react/cjs/react.production.min';
 import deal from './deal.js';
 class GameOH {
     constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers, startDealer) {
@@ -41,7 +41,8 @@ class GameOH {
                 continueUp = false;
                 break;
             default:
-                noDeals = noPlayerCards;
+                this.dealPattern = "H2L2H";
+                startAtOne = false;
         }
         let upAdjust = 0;
         for (let j = 0; j < noPlayerCards; j++) {

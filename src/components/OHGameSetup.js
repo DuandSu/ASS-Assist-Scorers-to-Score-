@@ -1,6 +1,7 @@
 import React from 'react';
 import OHDealPattern from './OHDealPattern';
 import OHPlayerList from './OHPlayerList.js';
+import OHDealer from './OHDealer.js';
 
 function OHGameSetup(props) {
 
@@ -54,6 +55,11 @@ function OHGameSetup(props) {
             />
             <br></br>
             <OHPlayerList 
+                listOfPlayers={props.listOfPlayers}
+                onChange={props.onChange}
+            />
+            <br></br>
+            <OHDealer
                 listOfPlayers={props.listOfPlayers}
                 onChange={props.onChange}
             />

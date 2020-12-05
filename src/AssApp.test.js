@@ -3,6 +3,6 @@ import AssApp from './AssApp';
 
 test('renders learn react link', () => {
   render(<AssApp />);
-  // const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/learn react/i);
   // expect(linkElement).toBeInTheDocument();
 });
