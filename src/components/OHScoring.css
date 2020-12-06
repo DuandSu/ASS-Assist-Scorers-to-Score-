@@ -167,22 +167,6 @@
     /* box-sizing: border-box; */
 }
 
-.OhHellTotalsRBB {
-    display: inline-table;
-    color: red;
-    width: 60px;
-    margin: 0px;
-    margin-bottom: 5px;
-    border-style: solid;
-    border-top-width: 3px;
-    border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-color: black;
-    padding: 3px;
-    /* box-sizing: border-box; */
-}
-
 .OhHellTotalsLBB {
     display: inline-table;
     color: red;
@@ -226,6 +210,22 @@
     border-top-width: 3px;
     border-left-width: 1px;
     border-right-width: 1px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTotalsRBB {
+    display: inline-table;
+    color: aquamarine;
+    width: 60px;
+    margin: 0px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 3px;
     border-bottom-width: 3px;
     border-color: black;
     padding: 3px;
