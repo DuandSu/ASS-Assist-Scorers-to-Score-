@@ -2,6 +2,7 @@ import React from 'react';
 import './OHScoring.css';
 // import OHDealPattern from './OHDealPattern';
 import OHScoringHeader from './OHScoringHeader.js';
+import OHScoringRows from './OHScoringRows.js';
 import OHScoringTotals from './OHScoringTotals.js';
 // import OHDealer from './OHDealer.js';
 
@@ -10,97 +11,6 @@ function OHScoring(props) {
     let gameScoring =
         // <div className="OhHellSetup">
         <div>
-            <label className="OhHellRowLB">1</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">11</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">22</label>
-            <label className="OhHellRow">3</label>
-            <label className="OhHellRow">3</label>
-            <label className="OhHellRow">33</label>
-            <label className="OhHellRow">4</label>
-            <label className="OhHellRow">4</label>
-            <label className="OhHellRow">44</label>
-            <label className="OhHellRow">5</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRowRB">+5</label>
-            <br></br>
-
-            <label className="OhHellRowLB">2</label>
-            <label className="OhHellRow">9</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">22</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">3</label>
-            <label className="OhHellRow">3</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">22</label>
-            <label className="OhHellRowRB">+3</label>
-            <br></br>
-            
-            <label className="OhHellRowLB">9</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">2</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRowRB">-1</label>
-            <br></br>
-
-            <label className="OhHellRowLB">10</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">0</label>
-            <label className="OhHellRow">10</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">1</label>
-            <label className="OhHellRow">11</label>
-            <label className="OhHellRowRB">+1</label>
-            <br></br>
 
         </div>
         // <input 
@@ -172,7 +82,9 @@ function OHScoring(props) {
             <OHScoringHeader 
                 listOfPlayers={props.listOfPlayers}
             />
-            {gameScoring}
+            <OHScoringRows 
+                listOfPlayers={props.listOfPlayers}
+            />
             <OHScoringTotals 
                 listOfPlayers={props.listOfPlayers}
             />

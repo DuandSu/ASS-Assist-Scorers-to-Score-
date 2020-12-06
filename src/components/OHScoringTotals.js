@@ -2,10 +2,6 @@ import React from 'react';
 
 function OHScoringTotals(props) {
 
-    // let header1 = [];
-
-    // let headerOH = [];
-
     let totalsOH = 
         <div>
             <label className="OhHellTotalsLBB">Total</label>
@@ -34,38 +30,6 @@ function OHScoringTotals(props) {
 
     // header1.push(
     //     <div>
-    //         <label className="OhHellTitleLTB">Round</label>
-    //         <label className="OhHellTitle2TB">Cards</label>
-    //         <label className="OhHellTitleTB">Cory</label>
-    //         <label className="OhHellTitleTB">Scott</label>
-    //         <label className="OhHellTitleTB">Leanne</label>
-    //         <label className="OhHellTitleTB">Murray</label>
-    //         <label className="OhHellTitleTB">Suzanne</label>
-    //         <label className="OhHellTitleTB">Duane</label>
-    //         <label className="OhHellTitleTRB">Bid</label>
-    //         <br></br>
-    //         <label className="OhHellTitleLBB">Junk</label>
-    //         <label className="OhHellTitle2BB">Junk</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleBB">Bid</label>
-    //         <label className="OhHellTitleBB">Made</label>
-    //         <label className="OhHellTitleBB">Points</label>
-    //         <label className="OhHellTitleRBB">Check</label>
-    //         <br></br>
     //     </div>
     // );
     // for (let playerNo = 0; playerNo < props.listOfPlayers.length; playerNo++) {
