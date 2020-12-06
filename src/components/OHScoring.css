@@ -1,11 +1,216 @@
-.OhHellTitle1 {
+.OhHellTitleLTB {
     display: inline-table;
     color: red;
     width: 60px;
-    /* height: 50px; */
+    margin: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitleTB {
+    display: inline-table;
+    color: red;
+    width: 193.5px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitle2TB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitleTRB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitleLBB {
+    display: inline-table;
+    color: aquamarine;
+    width: 60px;
+    margin: 0px;
+    margin-left: 5px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 3px;
+    border-right-width: 1px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitleBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitle2BB {
+    display: inline-table;
+    color: aquamarine;
+    width: 60px;
+    margin: 0px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTitleRBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellRowLB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-left: 5px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 3px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellRowRB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellRow {
+    display: inline-table;
+    color: red;
+    width: 60px;
     margin: 0px;
     border-style: solid;
     border-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTotalsRBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 1px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTotalsLBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTotalsBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 3px;
     border-color: black;
     padding: 3px;
     /* box-sizing: border-box; */
