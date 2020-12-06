@@ -1,46 +1,15 @@
 import React from 'react';
 import './OHScoring.css';
 // import OHDealPattern from './OHDealPattern';
-// import OHPlayerList from './OHPlayerList.js';
+import OHScoringHeader from './OHScoringHeader.js';
+import OHScoringTotals from './OHScoringTotals.js';
 // import OHDealer from './OHDealer.js';
 
 function OHScoring(props) {
 
     let gameScoring =
-        <div className="OhHellSetup">
-            <label className="OhHellTitleLTB">Round</label>
-            <label className="OhHellTitle2TB">Cards</label>
-            <label className="OhHellTitleTB">Cory</label>
-            <label className="OhHellTitleTB">Scott</label>
-            <label className="OhHellTitleTB">Leanne</label>
-            <label className="OhHellTitleTB">Murray</label>
-            <label className="OhHellTitleTB">Suzanne</label>
-            <label className="OhHellTitleTB">Duane</label>
-            <label className="OhHellTitleTRB">Bid</label>
-            <br></br>
-            <label className="OhHellTitleLBB">Junk</label>
-            <label className="OhHellTitle2BB">Junk</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleBB">Bid</label>
-            <label className="OhHellTitleBB">Made</label>
-            <label className="OhHellTitleBB">Points</label>
-            <label className="OhHellTitleRBB">Check</label>
-            <br></br>
-
+        // <div className="OhHellSetup">
+        <div>
             <label className="OhHellRowLB">1</label>
             <label className="OhHellRow">10</label>
             <label className="OhHellRow">0</label>
@@ -133,28 +102,6 @@ function OHScoring(props) {
             <label className="OhHellRowRB">+1</label>
             <br></br>
 
-            <label className="OhHellTotalsLBB">Total</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">34</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">34</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">43</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">55</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">64</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotals2BB">Junk</label>
-            <label className="OhHellTotalsBB">43</label>
-            <label className="OhHellTotalsRBB">Junk</label>
-            <br></br>
         </div>
         // <input 
         // <label htmlFor="inputGameNo">Game Number: </label>
@@ -221,8 +168,14 @@ function OHScoring(props) {
 
 
     return (
-        <div>
+        <div className="OhHellSetup">
+            <OHScoringHeader 
+                listOfPlayers={props.listOfPlayers}
+            />
             {gameScoring}
+            <OHScoringTotals 
+                listOfPlayers={props.listOfPlayers}
+            />
         </div>
     );
 }
