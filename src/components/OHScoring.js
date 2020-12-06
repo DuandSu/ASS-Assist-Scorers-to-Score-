@@ -133,27 +133,27 @@ function OHScoring(props) {
             <label className="OhHellRowRB">+1</label>
             <br></br>
 
-            <label className="OhHellTotalsRBB">10</label>
-            <label className="OhHellTotalsBB">1</label>
-            <label className="OhHellTotalsBB">1</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">10</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">10</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">10</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">0</label>
-            <label className="OhHellTotalsBB">10</label>
-            <label className="OhHellTotalsBB">1</label>
-            <label className="OhHellTotalsBB">1</label>
-            <label className="OhHellTotalsBB">11</label>
-            <label className="OhHellTotalsLBB">+1</label>
+            <label className="OhHellTotalsLBB">Total</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">34</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">34</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">43</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">55</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">64</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotals2BB">Junk</label>
+            <label className="OhHellTotalsBB">43</label>
+            <label className="OhHellTotalsRBB">Junk</label>
             <br></br>
         </div>
         // <input 

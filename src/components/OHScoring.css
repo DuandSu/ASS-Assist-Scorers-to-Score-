@@ -172,6 +172,22 @@
     color: red;
     width: 60px;
     margin: 0px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
+.OhHellTotalsLBB {
+    display: inline-table;
+    color: red;
+    width: 60px;
+    margin: 0px;
     margin-left: 5px;
     margin-bottom: 5px;
     border-style: solid;
@@ -184,7 +200,7 @@
     /* box-sizing: border-box; */
 }
 
-.OhHellTotalsLBB {
+.OhHellTotalsBB {
     display: inline-table;
     color: red;
     width: 60px;
@@ -193,16 +209,16 @@
     border-style: solid;
     border-top-width: 3px;
     border-left-width: 1px;
-    border-right-width: 3px;
+    border-right-width: 1px;
     border-bottom-width: 3px;
     border-color: black;
     padding: 3px;
     /* box-sizing: border-box; */
 }
 
-.OhHellTotalsBB {
+.OhHellTotals2BB {
     display: inline-table;
-    color: red;
+    color: aquamarine;
     width: 60px;
     margin: 0px;
     margin-bottom: 5px;
