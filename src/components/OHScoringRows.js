@@ -2,7 +2,49 @@ import React from 'react';
 
 function OHScoringRows(props) {
 
-    let rowsOH = 
+    let rowsOH = [];
+
+    for (let roundIdx = 0; roundIdx < props.game.deals.length; roundIdx++) {
+        console.log("Round No: " + props.game.deals[roundIdx].roundNo);
+        rowsOH.push(
+        <label key={`labelOHRoundRow${roundIdx}`} className="OhHellRowLB">{props.game.deals[roundIdx].roundNo}</label>
+        );
+        rowsOH.push(
+            <label key={`labelOHNoCardsRow${roundIdx}`} className="OhHellRow">{props.game.deals[roundIdx].cardsDealt}</label>
+        );
+        for (let playerIdx = 0; playerIdx < props.game.listOfPlayers.length; playerIdx++) {
+            rowsOH.push(
+                <label 
+                    key={`labelOHBidRow${roundIdx}a${playerIdx}`} 
+                    className="OhHellRow">
+                        {props.game.getPlayerBid(roundIdx + 1, playerIdx + 1) === null 
+                        ? "---"
+                        : props.game.getPlayerBid(roundIdx + 1, playerIdx + 1)}
+                </label>
+            );
+            rowsOH.push(
+                <label 
+                    key={`labelOHMadeRow${roundIdx}a${playerIdx}`} 
+                    className="OhHellRow">
+                        {props.game.getPlayerMade(roundIdx + 1, playerIdx + 1) === null
+                        ? "---"
+                        : props.game.getPlayerMade(roundIdx + 1, playerIdx + 1)
+                        }
+                </label>
+            );
+            rowsOH.push(
+            <label key={`labelOHPtsRow${roundIdx}a${playerIdx}`} className="OhHellRow">{props.game.getPlayerRoundScore(roundIdx + 1, playerIdx + 1)}</label>
+            );
+        }
+        rowsOH.push(
+            <label key={`labelOHBidChkRow${roundIdx}`} className="OhHellRowRB">{props.game.getTotalBidAmt(roundIdx + 1) - props.game.deals[roundIdx].cardsDealt}</label>
+        );
+        rowsOH.push(
+            <br></br>
+        );
+    }
+
+    let rowsOH2 = 
         <div>
             <label className="OhHellRowLB">1</label>
             <label className="OhHellRow">10</label>
@@ -96,24 +138,6 @@ function OHScoringRows(props) {
             <label className="OhHellRowRB">+1</label>
             <br></br>
         </div>
-
-    // header1.push(
-    //     <div>
-    //     </div>
-    // );
-    // for (let playerNo = 0; playerNo < props.listOfPlayers.length; playerNo++) {
-    //     playerList.push(
-    //         <div key={`divPlayerList${playerNo}`}>
-    //             <label htmlFor={`inputPlayer${playerNo}`}>Enter Player {playerNo+1}: </label>
-    //             <input 
-    //                 name={`inputPlayer${playerNo}`}
-    //                 type="text"
-    //                 value={props.listOfPlayers[playerNo]}
-    //                 onChange={props.onChange}>
-    //             </input>            
-    //         </div>
-    //     );
-    // }
 
     return (
         <div>
