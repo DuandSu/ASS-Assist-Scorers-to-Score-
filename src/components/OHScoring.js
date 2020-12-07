@@ -80,13 +80,13 @@ function OHScoring(props) {
     return (
         <div className="OhHellSetup">
             <OHScoringHeader 
-                listOfPlayers={props.listOfPlayers}
+                listOfPlayers={props.game.listOfPlayers}
             />
             <OHScoringRows 
-                listOfPlayers={props.listOfPlayers}
+                game={props.game}
             />
             <OHScoringTotals 
-                listOfPlayers={props.listOfPlayers}
+                game={props.game}
             />
         </div>
     );

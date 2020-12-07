@@ -2,11 +2,13 @@ import React from 'react';
 import './OhHell.css';
 import OHGameSetup from './OHGameSetup';
 import OHScoring from './OHScoring';
+import gameOH from '../scripts/gameOH.js';
 
 class OhHell extends React.Component {
 
     constructor(props) {
         super(props);
+        this.OHGame = {};
         this.maxCardsCheck = 51;
         this.passedInputNoPlayers = false;
         this.screwTheDealer = false;
@@ -124,6 +126,17 @@ class OhHell extends React.Component {
         if (event.target.id === "idBtSetupCreate") {
             if (this.passedInputNoPlayers && this.passedInputNoPlayers) {
                 console.log(this.state)
+
+                this.OHGame = new gameOH.GameOH (
+                    this.state.inputGameNo,
+                    this.state.inputGameComm, 
+                    this.screwTheDealer, 
+                    this.state.inputNoPlayers,
+                    this.state.inputNoPlayerCards, 
+                    this.state.dealPatternSelect, 
+                    this.state.inputPlayer, 
+                    this.dealerSelect);
+                
                 this.setState({
                     OHMode: "Scoring"          
                 });            
@@ -158,20 +171,22 @@ class OhHell extends React.Component {
                         listOfPlayers={this.state.inputPlayer}
                         screwTD = {this.screwTheDealer}
                         onChange={this.onInputChangeSetup}
-                        onSubmit={this.props.handleReturntoMain}
+                        onSubmit={this.onSubmitFormSetup}
+                        onCancel={this.props.handleReturntoMain}
                 />);
         }
         else if (this.state.OHMode === "Scoring") {
             OHComp.push(
                 <OHScoring 
-                        inputGameNo={this.state.inputGameNo}
-                        inputGameComm={this.state.inputGameComm}
-                        inputNoPlayers={this.state.inputNoPlayers}
-                        inputNoPlayerCards={this.state.inputNoPlayerCards}
-                        dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
-                        defValue={this.state.dealPatternSelect}
-                        listOfPlayers={this.state.inputPlayer}
-                        screwTD = {this.screwTheDealer}
+                        // inputGameNo={this.state.inputGameNo}
+                        // inputGameComm={this.state.inputGameComm}
+                        // inputNoPlayers={this.state.inputNoPlayers}
+                        // inputNoPlayerCards={this.state.inputNoPlayerCards}
+                        // dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
+                        // defValue={this.state.dealPatternSelect}
+                        game={this.OHGame}
+                        // listOfPlayers={this.state.inputPlayer}
+                        // screwTD = {this.screwTheDealer}
                         onChange={this.onInputChangeSetup}
                 />);
         }

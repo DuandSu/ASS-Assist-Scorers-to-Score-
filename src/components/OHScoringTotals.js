@@ -3,7 +3,7 @@ import React from 'react';
 function OHScoringTotals(props) {
 
     let sumsOH = [];
-    for (let playerNo = 0; playerNo < props.listOfPlayers.length; playerNo++) {
+    for (let playerNo = 0; playerNo < props.game.listOfPlayers.length; playerNo++) {
         sumsOH.push(
             <label key={`labelOHBidSums${playerNo}`} className="OhHellTotals2BB">Junk</label>
         );
@@ -11,7 +11,7 @@ function OHScoringTotals(props) {
             <label key={`labelOHMadeSums${playerNo}`} className="OhHellTotals2BB">Junk</label>
         );
         sumsOH.push(
-            <label key={`labelOHPtsSums${playerNo}`} className="OhHellTotalsBB">34</label>
+        <label key={`labelOHPtsSums${playerNo}`} className="OhHellTotalsBB">{props.game.getPlayerTotalScore(playerNo + 1)}</label>
         );
     }
 
