@@ -17,6 +17,10 @@ function AssApp() {
 
   }
   
+  const handleReturntoMain = (e) => {
+    setAppKey("starter");
+  }
+
   let output = [];
   if (appKey === "starter") {
     console.log("Executing Starter Again.")
@@ -30,7 +34,12 @@ function AssApp() {
   else if (appKey === "Oh Hell") {
     console.log("Executing Oh Hell.")
     // output.push(<OhHell key="OhHell" sMessageArea={messageArea}/>);
-    output.push(<OhHell key="OhHell" sMessageArea="Select your options then click Create button to start scoring your game!"/>);
+    output.push(
+      <OhHell 
+        key="OhHell" 
+        sMessageArea="Select your options then click Create button to start scoring your game!"
+        handleReturntoMain={(e) => handleReturntoMain(e)}
+      />);
   }
   else {
     console.log("Executing Starter as Default.")

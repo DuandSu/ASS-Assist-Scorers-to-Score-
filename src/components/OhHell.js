@@ -10,8 +10,8 @@ class OhHell extends React.Component {
         this.maxCardsCheck = 51;
         this.passedInputNoPlayers = false;
         this.screwTheDealer = false;
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onSubmitForm = this.onSubmitForm.bind(this);
+        this.onInputChangeSetup = this.onInputChangeSetup.bind(this);
+        this.onSubmitFormSetup = this.onSubmitFormSetup.bind(this);
         this.state = {
             OHMode: "Setup",
             msgArea: this.props.sMessageArea,
@@ -24,7 +24,7 @@ class OhHell extends React.Component {
         };
     }
 
-    onInputChange(event) {
+    onInputChangeSetup(event) {
         console.log(event.target.name + "=" + event.target.value);
         this.setState({
             [event.target.name]: event.target.value
@@ -119,23 +119,26 @@ class OhHell extends React.Component {
         }
     }
     
-    onSubmitForm() {
-        if (this.passedInputNoPlayers && this.passedInputNoPlayers) {
-            console.log(this.state)
-            this.setState({
-                OHMode: "Scoring"          
-            });            
-        }
-        else {
-            if (!this.passedInputNoPlayers) {
+    onSubmitFormSetup(event) {
+        // if (event.target.name.slice(0,11) === "inputPlayer") {
+        if (event.target.id === "idBtSetupCreate") {
+            if (this.passedInputNoPlayers && this.passedInputNoPlayers) {
+                console.log(this.state)
                 this.setState({
-                    msgArea: `Correct error on Number of Players before creating`          
-                });
+                    OHMode: "Scoring"          
+                });            
             }
-            else if (!this.passedInputNoPlayers) {
-                this.setState({
-                    msgArea: `Correct error on Number of Cards per Player before creating`          
-                });
+            else {
+                if (!this.passedInputNoPlayers) {
+                    this.setState({
+                        msgArea: `Correct error on Number of Players before creating`          
+                    });
+                }
+                else if (!this.passedInputNoPlayers) {
+                    this.setState({
+                        msgArea: `Correct error on Number of Cards per Player before creating`          
+                    });
+                }
             }
         }
     }
@@ -154,11 +157,11 @@ class OhHell extends React.Component {
                         defValue={this.state.dealPatternSelect}
                         listOfPlayers={this.state.inputPlayer}
                         screwTD = {this.screwTheDealer}
-                        onChange={this.onInputChange}
-                        onSubmit={this.onSubmitForm}
+                        onChange={this.onInputChangeSetup}
+                        onSubmit={this.props.handleReturntoMain}
                 />);
         }
-        else {
+        else if (this.state.OHMode === "Scoring") {
             OHComp.push(
                 <OHScoring 
                         inputGameNo={this.state.inputGameNo}
@@ -169,10 +172,10 @@ class OhHell extends React.Component {
                         defValue={this.state.dealPatternSelect}
                         listOfPlayers={this.state.inputPlayer}
                         screwTD = {this.screwTheDealer}
-                        onChange={this.onInputChange}
-                        onSubmit={this.onSubmitForm}
+                        onChange={this.onInputChangeSetup}
                 />);
         }
+        else OHComp.push(<div></div>);
 
         return (
             <div>

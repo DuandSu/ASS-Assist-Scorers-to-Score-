@@ -68,8 +68,8 @@ function OHGameSetup(props) {
                 <br></br>
             </div>
             }
-            <button type="button" onClick={props.onSubmit}>Create</button>
-            <button type="button" onClick={props.onSubmit}>Cancel</button>          
+            <button id="idBtSetupCreate" type="button" onClick={props.onSubmit}>Create</button>
+            <button  type="button" onClick={props.onSubmit}>Cancel</button>          
         </div>
 
     return (
