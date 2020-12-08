@@ -84,6 +84,7 @@ function OHScoring(props) {
             />
             <OHScoringRows 
                 game={props.game}
+                onChange={props.onChange}
             />
             <OHScoringTotals 
                 game={props.game}

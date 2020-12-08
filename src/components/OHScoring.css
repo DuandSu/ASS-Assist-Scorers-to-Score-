@@ -167,6 +167,19 @@
     /* box-sizing: border-box; */
 }
 
+.OhHellRowInp {
+    display: inline-table;
+    color: red;
+    width: 58.7px;
+    height: 15px;
+    margin: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 3px;
+    /* box-sizing: border-box; */
+}
+
 .OhHellTotalsLBB {
     display: inline-table;
     color: red;

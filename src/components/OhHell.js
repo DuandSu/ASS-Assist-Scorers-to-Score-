@@ -14,6 +14,7 @@ class OhHell extends React.Component {
         this.screwTheDealer = false;
         this.onInputChangeSetup = this.onInputChangeSetup.bind(this);
         this.onSubmitFormSetup = this.onSubmitFormSetup.bind(this);
+        this.onInputChangeScoring = this.onInputChangeScoring.bind(this);
         this.state = {
             OHMode: "Setup",
             msgArea: this.props.sMessageArea,
@@ -155,7 +156,44 @@ class OhHell extends React.Component {
             }
         }
     }
-    
+
+    onInputChangeScoring(event) {
+        // console.log(event.target.name + "=" + event.target.value);
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+        // console.log("Event Target Name: " + event.target.name);
+        // console.log("Event Target Value: " + event.target.value);
+
+        if (event.target.name.slice(0,13) === "inputOHBidRow") {
+            const aDiv = event.target.name.indexOf("z");
+            // console.log("Bid ADiv: ", aDiv);
+            const roundNo = (parseInt(event.target.name.slice(13, aDiv))) + 1
+            // console.log("Round No: " + roundNo);
+            const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
+            // console.log("Player No: " + playerNo);
+            const bid = parseInt(event.target.value);
+            // console.log("Bid: " + bid);
+
+            const result = this.OHGame.updatePlayerBid(roundNo, playerNo, bid);
+            // console.log("Result of Bid: " + result);
+        }
+        else if (event.target.name.slice(0,14) === "inputOHMadeRow") {
+            const aDiv = event.target.name.indexOf("z");
+            // console.log("Made ADiv: ", aDiv);
+            const roundNo = (parseInt(event.target.name.slice(14, aDiv))) + 1
+            // console.log("Round No: " + roundNo);
+            const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
+            // console.log("Player No: " + playerNo);
+            const made = parseInt(event.target.value);
+            // console.log("Made: " + made);
+
+            const result = this.OHGame.updatePlayerMade(roundNo, playerNo, made);
+            // console.log("Result of Made: " + result);
+            this.OHGame.updateAllScores(roundNo); // Works but inefficient. Create updatePlayerScore.
+        }
+    }
+            
     render() {
         
         let OHComp = [];
@@ -178,16 +216,8 @@ class OhHell extends React.Component {
         else if (this.state.OHMode === "Scoring") {
             OHComp.push(
                 <OHScoring 
-                        // inputGameNo={this.state.inputGameNo}
-                        // inputGameComm={this.state.inputGameComm}
-                        // inputNoPlayers={this.state.inputNoPlayers}
-                        // inputNoPlayerCards={this.state.inputNoPlayerCards}
-                        // dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
-                        // defValue={this.state.dealPatternSelect}
                         game={this.OHGame}
-                        // listOfPlayers={this.state.inputPlayer}
-                        // screwTD = {this.screwTheDealer}
-                        onChange={this.onInputChangeSetup}
+                        onChange={this.onInputChangeScoring}
                 />);
         }
         else OHComp.push(<div></div>);

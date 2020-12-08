@@ -14,24 +14,47 @@ function OHScoringRows(props) {
         );
         for (let playerIdx = 0; playerIdx < props.game.listOfPlayers.length; playerIdx++) {
             rowsOH.push(
-                <label 
-                    key={`labelOHBidRow${roundIdx}a${playerIdx}`} 
-                    className="OhHellRow">
-                        {props.game.getPlayerBid(roundIdx + 1, playerIdx + 1) === null 
-                        ? "---"
+                <input 
+                    key={`inputOHBidRow${roundIdx}z${playerIdx}`}
+                    className="OhHellRowInp" 
+                    name={`inputOHBidRow${roundIdx}z${playerIdx}`} 
+                    type="number"
+                    value={props.game.getPlayerBid(roundIdx + 1, playerIdx + 1) === null 
+                        ? 0
                         : props.game.getPlayerBid(roundIdx + 1, playerIdx + 1)}
-                </label>
+                    onChange={props.onChange}>
+                </input>
             );
             rowsOH.push(
-                <label 
-                    key={`labelOHMadeRow${roundIdx}a${playerIdx}`} 
-                    className="OhHellRow">
-                        {props.game.getPlayerMade(roundIdx + 1, playerIdx + 1) === null
-                        ? "---"
-                        : props.game.getPlayerMade(roundIdx + 1, playerIdx + 1)
-                        }
-                </label>
+                <input 
+                    key={`inputOHMadeRow${roundIdx}z${playerIdx}`}
+                    className="OhHellRowInp" 
+                    name={`inputOHMadeRow${roundIdx}z${playerIdx}`} 
+                    type="number"
+                    value={props.game.getPlayerMade(roundIdx + 1, playerIdx + 1) === null
+                        ? 0
+                        : props.game.getPlayerMade(roundIdx + 1, playerIdx + 1)}
+                    onChange={props.onChange}>
+                </input>
             );
+            // rowsOH.push(
+            //     <label ***** Change to Input
+            //         key={`labelOHBidRow${roundIdx}a${playerIdx}`} 
+            //         className="OhHellRow">
+            //             {props.game.getPlayerBid(roundIdx + 1, playerIdx + 1) === null 
+            //             ? "---"
+            //             : props.game.getPlayerBid(roundIdx + 1, playerIdx + 1)}
+            //     </label>
+            // );
+            // rowsOH.push(
+            //     <label 
+            //         key={`labelOHMadeRow${roundIdx}a${playerIdx}`} 
+            //         className="OhHellRow">
+            //             {props.game.getPlayerMade(roundIdx + 1, playerIdx + 1) === null
+            //             ? "---"
+            //             : props.game.getPlayerMade(roundIdx + 1, playerIdx + 1)}
+            //     </label>
+            // );
             rowsOH.push(
             <label key={`labelOHPtsRow${roundIdx}a${playerIdx}`} className="OhHellRow">{props.game.getPlayerRoundScore(roundIdx + 1, playerIdx + 1)}</label>
             );
