@@ -1,6 +1,6 @@
 .OhHellTitleLTB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-top: 5px;
@@ -17,7 +17,7 @@
 
 .OhHellTitleTB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 193.5px;
     margin: 0px;
     margin-top: 5px;
@@ -33,7 +33,7 @@
 
 .OhHellTitle2TB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-top: 5px;
@@ -49,7 +49,7 @@
 
 .OhHellTitleTRB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-top: 5px;
@@ -65,7 +65,7 @@
 
 .OhHellTitleLBB {
     display: inline-table;
-    color: aquamarine;
+    color: rgb(211, 63, 63);
     width: 60px;
     margin: 0px;
     margin-left: 5px;
@@ -81,7 +81,7 @@
 
 .OhHellTitleBB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -96,7 +96,7 @@
 
 .OhHellTitle2BB {
     display: inline-table;
-    color: aquamarine;
+    color: rgb(211, 63, 63);
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -111,7 +111,7 @@
 
 .OhHellTitleRBB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -126,7 +126,7 @@
 
 .OhHellRowLB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-left: 5px;
@@ -142,7 +142,7 @@
 
 .OhHellRowRB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -157,7 +157,7 @@
 
 .OhHellRow {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -169,7 +169,7 @@
 
 .OhHellRowInp {
     display: inline-table;
-    color: red;
+    color: darkblue;
     width: 58.7px;
     height: 15px;
     margin: 0px;
@@ -182,7 +182,7 @@
 
 .OhHellTotalsLBB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-left: 5px;
@@ -199,7 +199,7 @@
 
 .OhHellTotalsBB {
     display: inline-table;
-    color: red;
+    color: black;
     width: 60px;
     margin: 0px;
     margin-bottom: 5px;
@@ -215,7 +215,7 @@
 
 .OhHellTotals2BB {
     display: inline-table;
-    color: aquamarine;
+    color: rgb(211, 63, 63);
     width: 60px;
     margin: 0px;
     margin-bottom: 5px;
@@ -231,7 +231,7 @@
 
 .OhHellTotalsRBB {
     display: inline-table;
-    color: aquamarine;
+    color: rgb(211, 63, 63);
     width: 60px;
     margin: 0px;
     margin-bottom: 5px;

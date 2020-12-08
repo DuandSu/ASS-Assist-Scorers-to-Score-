@@ -137,6 +137,8 @@ class OhHell extends React.Component {
                     this.state.dealPatternSelect, 
                     this.state.inputPlayer, 
                     this.dealerSelect);
+
+                console.log("STD: " + this.OHGame.isScrewTD());
                 
                 this.setState({
                     OHMode: "Scoring"          
@@ -167,29 +169,21 @@ class OhHell extends React.Component {
 
         if (event.target.name.slice(0,13) === "inputOHBidRow") {
             const aDiv = event.target.name.indexOf("z");
-            // console.log("Bid ADiv: ", aDiv);
             const roundNo = (parseInt(event.target.name.slice(13, aDiv))) + 1
-            // console.log("Round No: " + roundNo);
             const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
-            // console.log("Player No: " + playerNo);
             const bid = parseInt(event.target.value);
-            // console.log("Bid: " + bid);
 
             const result = this.OHGame.updatePlayerBid(roundNo, playerNo, bid);
-            // console.log("Result of Bid: " + result);
+            console.log("Result of Bid: " + result);
         }
         else if (event.target.name.slice(0,14) === "inputOHMadeRow") {
             const aDiv = event.target.name.indexOf("z");
-            // console.log("Made ADiv: ", aDiv);
             const roundNo = (parseInt(event.target.name.slice(14, aDiv))) + 1
-            // console.log("Round No: " + roundNo);
             const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
-            // console.log("Player No: " + playerNo);
             const made = parseInt(event.target.value);
-            // console.log("Made: " + made);
 
             const result = this.OHGame.updatePlayerMade(roundNo, playerNo, made);
-            // console.log("Result of Made: " + result);
+            console.log("Result of Made: " + result);
             this.OHGame.updateAllScores(roundNo); // Works but inefficient. Create updatePlayerScore.
         }
     }
