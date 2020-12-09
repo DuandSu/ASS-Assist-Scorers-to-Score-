@@ -3,9 +3,10 @@ import React from 'react';
 function OHDealPattern(props) {
 
     let dealPatternSelect =
-        <div>
-            <label htmlFor="dealPatternSelect">Deal Pattern: </label>
-            <select 
+        <div key="OHDealerPatternDivChild">
+            <label key="OHDealPatternSelectLabel" htmlFor="dealPatternSelect">Deal Pattern: </label>
+            <select
+                key="OHDealPatternSelect"
                 name="dealPatternSelect"
                 type="text"
                 value={props.defValue}
@@ -20,7 +21,7 @@ function OHDealPattern(props) {
         </div>
 
     return (
-        <div>
+        <div key="OHDealerPatternDivMain">
             {dealPatternSelect}
         </div>
     );

@@ -110,5 +110,5 @@ body {
 
 .Message-Area {
   font-size: calc(10px + 2vmin);
-  color: green;
+  color: rgb(211, 63, 63);
 }

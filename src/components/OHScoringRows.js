@@ -41,15 +41,15 @@ function OHScoringRows(props) {
             );
         }
         rowsOH.push(
-            <label key={`labelOHBidChkRow${roundIdx}`} className="OhHellRowRB">{props.game.getTotalBidAmt(roundIdx + 1) - props.game.deals[roundIdx].cardsDealt}</label>
+            <label key={`labelOHBidChkRow${roundIdx}`} className="OhHellRowRB">{props.game.getTotalBidAmt(roundIdx + 1) - props.game.deals[roundIdx].getCardsDealt()}</label>
         );
         rowsOH.push(
-            <br></br>
+            <br key={`brOHRoundRow${roundIdx}`}></br>
         );
     }
 
     return (
-        <div>
+        <div key="OHRowsDivMain">
             {rowsOH}
         </div>
     );

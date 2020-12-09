@@ -136,9 +136,10 @@ class OhHell extends React.Component {
                     this.state.inputNoPlayerCards, 
                     this.state.dealPatternSelect, 
                     this.state.inputPlayer, 
-                    this.dealerSelect);
+                    this.state.dealerSelect);
 
                 console.log("STD: " + this.OHGame.isScrewTD());
+                console.log("Dealer: " + this.state.dealerSelect);
                 
                 this.setState({
                     OHMode: "Scoring"          
@@ -167,6 +168,10 @@ class OhHell extends React.Component {
         // console.log("Event Target Name: " + event.target.name);
         // console.log("Event Target Value: " + event.target.value);
 
+        this.setState({
+            msgArea: ""
+        });     
+
         if (event.target.name.slice(0,13) === "inputOHBidRow") {
             const aDiv = event.target.name.indexOf("z");
             const roundNo = (parseInt(event.target.name.slice(13, aDiv))) + 1
@@ -174,7 +179,17 @@ class OhHell extends React.Component {
             const bid = parseInt(event.target.value);
 
             const result = this.OHGame.updatePlayerBid(roundNo, playerNo, bid);
-            console.log("Result of Bid: " + result);
+
+            if (result === -2) {
+                this.setState({
+                    msgArea: `Players cannot bid more than number of cards dealt (${this.OHGame.deals[roundNo - 1].getCardsDealt()})`
+                });                
+            }
+            else if (result === -3) {
+                this.setState({
+                    msgArea: `Dealer cannot bid ${this.OHGame.deals[roundNo].getCardsDealt() - this.OHGame.getTotalBidAmt(roundNo) + bid}`
+                });
+            }
         }
         else if (event.target.name.slice(0,14) === "inputOHMadeRow") {
             const aDiv = event.target.name.indexOf("z");
@@ -184,6 +199,11 @@ class OhHell extends React.Component {
 
             const result = this.OHGame.updatePlayerMade(roundNo, playerNo, made);
             console.log("Result of Made: " + result);
+            if (result === -2) {
+                this.setState({
+                    msgArea: `Tricks made cannot exceed the number of cards dealt (${this.OHGame.deals[roundNo - 1].getCardsDealt()})`
+                });                
+            }
             this.OHGame.updateAllScores(roundNo); // Works but inefficient. Create updatePlayerScore.
         }
     }
@@ -217,16 +237,16 @@ class OhHell extends React.Component {
         else OHComp.push(<div></div>);
 
         return (
-            <div>
-                <header className="App-Header">
-                    <button className="App-Buttons">Menu</button>
-                    <h1>Welcome to Oh Hell Scoring!</h1>
-                    <button className="App-Buttons">Login</button>
-                    <br></br>
+            <div key="OHDivMain">
+                <header key="OHHeaderMain" className="App-Header">
+                    <button key="OHBtMenu" className="App-Buttons">Menu</button>
+                    <h1 key="OHh1Main">Welcome to Oh Hell Scoring!</h1>
+                    <button key="OHBtLogin" className="App-Buttons">Login</button>
+                    <br key="OHbrMain"></br>
                 </header>
                 {OHComp}
-                <div className="App-Games">
-                    <p className="Message-Area">{this.state.msgArea}</p>
+                <div key="OHDivMsg" className="App-Games">
+                    <p key="OHpMsgArea" className="Message-Area">{this.state.msgArea}</p>
                 </div>
             </div>
         );

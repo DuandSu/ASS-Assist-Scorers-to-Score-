@@ -7,7 +7,7 @@ import OHScoringTotals from './OHScoringTotals.js';
 function OHScoring(props) {
 
     return (
-        <div className="OhHellSetup">
+        <div key="OHScoringDivMain" className="OhHellSetup">
             <OHScoringHeader 
                 listOfPlayers={props.game.listOfPlayers}
             />

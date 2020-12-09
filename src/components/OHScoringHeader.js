@@ -24,7 +24,7 @@ function OHScoringHeader(props) {
 
     let headerOH = [];
     headerOH.push(
-        <div>
+        <div key="OHTitleDivChild">
             <label className="OhHellTitleLTB">Round</label>
             <label className="OhHellTitle2TB">Cards</label>
             {namesOH}
@@ -39,7 +39,7 @@ function OHScoringHeader(props) {
     );
 
     return (
-        <div>
+        <div key="OHTitleDivMain">
             {headerOH}
         </div>
     );

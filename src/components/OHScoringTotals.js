@@ -17,7 +17,7 @@ function OHScoringTotals(props) {
 
     let totalsOH = [];
     totalsOH.push(
-        <div>
+        <div key="OHTotalsDivChild">
             <label className="OhHellTotalsLBB">Total</label>
             <label className="OhHellTotals2BB">Junk</label>
             {sumsOH}
@@ -27,7 +27,7 @@ function OHScoringTotals(props) {
     );
 
     return (
-        <div>
+        <div key="OHTotalsDivMain">
             {totalsOH}
         </div>
     );

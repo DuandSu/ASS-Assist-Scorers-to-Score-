@@ -1120,4 +1120,22 @@ test('Class gameOH: Test Screw The Dealer Methods?', () => {
     roundNo = 4; // Dealer is player 3. Bid Check is 7.
     listBids = [1, 2, 3, 4, 2]; // Previous bids exceed cards dealt. Dealer no longer screwed. Dealer can bid anything.
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(12); // Success returns total bids for the round.
+    
+    let dealerPlayerNo = 3;
+    expect(gameSTD.updatePlayerBid(roundNo, dealerPlayerNo, listBids[dealerPlayerNo - 1])).toBe(0); // Success returns player bid.
+    
+    roundNo = 5; // Dealer is player 4. Bid Check is 6.
+    dealerPlayerNo = 4;
+    listBids = [1, 1, 1, 2, 1]; // Dealer canNOT bid 2.
+    expect(gameSTD.updatePlayerBid(roundNo, 5, listBids[5 - 1])).toBe(0); // Success returns status 0.
+    expect(gameSTD.getPlayerBid(roundNo, 5)).toBe(1);
+    expect(gameSTD.updatePlayerBid(roundNo, 1, listBids[1 - 1])).toBe(0); // Success returns status 0.
+    expect(gameSTD.getPlayerBid(roundNo, 1)).toBe(1);
+    expect(gameSTD.updatePlayerBid(roundNo, 2, listBids[2 - 1])).toBe(0); // Success returns status 0.
+    expect(gameSTD.getPlayerBid(roundNo, 2)).toBe(1);
+    expect(gameSTD.updatePlayerBid(roundNo, 3, listBids[3 - 1])).toBe(0); // Success returns status 0.
+    expect(gameSTD.getPlayerBid(roundNo, 3)).toBe(1);
+    expect(gameSTD.updatePlayerBid(roundNo, dealerPlayerNo, listBids[dealerPlayerNo - 1])).toBe(-3); // Success returns player bid.
+    // expect(gameSTD.getPlayerBid(roundNo, dealerPlayerNo)).toBe(2);
+
 });
