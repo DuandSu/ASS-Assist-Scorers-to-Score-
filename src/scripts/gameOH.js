@@ -69,21 +69,35 @@ class GameOH {
                     startAtOne 
                         ? noPlayerCards + (noPlayerCards - this.deals.length)
                         : this.deals.length + 1 - noPlayerCards, // # of Cards
-                        noPlayers // # of Players
-                        )
+                        noPlayers, // # of Players
+                        sDealer // Dealer for the round
+                )
             );
+            if (sDealer === this.noPlayers) 
+                sDealer = 1;
+            else
+                sDealer++;
         }
+        console.log("Scoreboard before going back up: ");
+        console.log(this.deals);
         if (continueUp) {
-            for (let j = noPlayerCards; j < noPlayerCards * 2 - 1; j++) {
+            for (let j = parseInt(noPlayerCards); j < noPlayerCards * 2 - 1; j++) {
                 this.deals.push(
                     new deal.Deal(
                         j + 1 + upAdjust, // Round #
-                        startAtOne ? noPlayerCards + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards, // # of Cards
-                        noPlayers // # of Players
-                        )
+                        startAtOne ? parseInt(noPlayerCards) + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards, // # of Cards
+                        noPlayers, // # of Players
+                        sDealer // Dealer for the round
+                    )
                 );
-            }                
+                if (sDealer === this.noPlayers) 
+                    sDealer = 1;
+                else
+                    sDealer++;    
+            }
         }
+        console.log("Scoreboard final: ");
+        console.log(this.deals);
     }
 
     getPlayerName(getKey, getMethod) {
