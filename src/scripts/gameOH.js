@@ -12,7 +12,7 @@ class GameOH {
         this.deals = [];
 
         let sDealer = 0;
-        if (typeof startDealer === 'undefined' || startDealer > this.noPlayers || startDealer < 1)
+        if (typeof startDealer === 'undefined' || isNaN(startDealer) || startDealer > this.noPlayers || startDealer < 1)
             sDealer = (Math.floor(Math.random() * this.noPlayers)) + 1;
         else
             sDealer = startDealer;

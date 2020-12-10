@@ -166,11 +166,12 @@ class OhHell extends React.Component {
             const roundNo = (parseInt(event.target.name.slice(13, aDiv))) + 1
             const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
             const bid = parseInt(event.target.value);
-
+            
             const result = this.OHGame.updatePlayerBid(roundNo, playerNo, bid);
 
             const dealer = this.OHGame.getDealer(roundNo);
             const dealerName = this.OHGame.getPlayerName(dealer, "PLAYERNO")
+
             let dealerBid = this.OHGame.getPlayerBid(roundNo, dealer);
             if (dealerBid === null) dealerBid = 0;
 
