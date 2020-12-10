@@ -23,6 +23,7 @@ class OhHell extends React.Component {
             inputNoPlayers: 2,
             inputNoPlayerCards: 21,
             dealPatternSelect: "H2L2H",
+            dealerSelect: 0,
             inputPlayer: [],
         };
     }
@@ -239,6 +240,10 @@ class OhHell extends React.Component {
             OHComp.push(
                 <OHScoring 
                         game={this.OHGame}
+                        gameNo={this.state.inputGameNo}
+                        gameComm={this.state.inputGameComm}
+                        startDealer={this.OHGame.getPlayerName(this.OHGame.getDealer(1), "PLAYERNO")}
+                        screwTD={this.screwTheDealer}
                         onChange={this.onInputChangeScoring}
                 />);
         }

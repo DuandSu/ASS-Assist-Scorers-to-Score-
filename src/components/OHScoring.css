@@ -1,3 +1,64 @@
+.OhHellGameNo {
+    display: inline-table;
+    color: black;
+    width: 150px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+}
+
+.OhHellDealer {
+    display: inline-table;
+    color: black;
+    width: 150px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+}
+
+.OhHellSTD {
+    display: inline-table;
+    color: black;
+    width: 110px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+}
+
+.OhHellGameComm {
+    display: inline-table;
+    color: black;
+    width: 800px;
+    margin: 0px;
+    margin-top: 5px;
+    border-style: solid;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-color: black;
+    padding: 3px;
+}
+
 .OhHellTitleLTB {
     display: inline-table;
     color: black;
