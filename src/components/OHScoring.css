@@ -127,6 +127,7 @@
 .OhHellRowLB {
     display: inline-table;
     color: black;
+    background-color: rgb(212, 119, 119);
     width: 60px;
     margin: 0px;
     margin-left: 5px;
@@ -143,6 +144,7 @@
 .OhHellRowRB {
     display: inline-table;
     color: black;
+    background-color: rgb(212, 119, 119);
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -158,6 +160,7 @@
 .OhHellRow {
     display: inline-table;
     color: black;
+    background-color: rgb(212, 119, 119);
     width: 60px;
     margin: 0px;
     border-style: solid;
@@ -200,6 +203,7 @@
 .OhHellTotalsBB {
     display: inline-table;
     color: black;
+    background-color: rgb(212, 119, 119);
     width: 60px;
     margin: 0px;
     margin-bottom: 5px;

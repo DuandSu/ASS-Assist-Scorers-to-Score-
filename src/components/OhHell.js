@@ -32,9 +32,6 @@ class OhHell extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log("Event Target Name: " + event.target.name);
-        console.log("Event Target Name[0-10]: " + event.target.name.slice(0,11));
-        console.log("Event Target Value: " + event.target.value);
         //
         // Actions for change to Screw the Dealer Checkbox
         //
@@ -43,7 +40,6 @@ class OhHell extends React.Component {
             this.setState({
                 msgArea: ""
             });
-            console.log("Screw the Dealer Flag: " + this.screwTheDealer);
         }
 
         //
@@ -115,7 +111,6 @@ class OhHell extends React.Component {
             let tmpInputPlayer = this.state.inputPlayer.slice(0);
             let playerNo = parseInt(event.target.name.slice(11));
             tmpInputPlayer[playerNo] = event.target.value;
-            console.log("Player List Set Player # " + playerNo + " = " + tmpInputPlayer[playerNo]);
             this.setState({
                 inputPlayer: tmpInputPlayer,
             });
@@ -132,15 +127,12 @@ class OhHell extends React.Component {
                     this.state.inputGameNo,
                     this.state.inputGameComm, 
                     this.screwTheDealer, 
-                    this.state.inputNoPlayers,
+                    parseInt(this.state.inputNoPlayers),
                     this.state.inputNoPlayerCards, 
                     this.state.dealPatternSelect, 
                     this.state.inputPlayer, 
-                    this.state.dealerSelect);
+                    parseInt(this.state.dealerSelect) + 1);
 
-                console.log("STD: " + this.OHGame.isScrewTD());
-                console.log("Dealer: " + this.state.dealerSelect);
-                
                 this.setState({
                     OHMode: "Scoring"          
                 });            
@@ -161,12 +153,9 @@ class OhHell extends React.Component {
     }
 
     onInputChangeScoring(event) {
-        // console.log(event.target.name + "=" + event.target.value);
         this.setState({
             [event.target.name]: event.target.value
         });
-        // console.log("Event Target Name: " + event.target.name);
-        // console.log("Event Target Value: " + event.target.value);
 
         this.setState({
             msgArea: ""
@@ -180,6 +169,11 @@ class OhHell extends React.Component {
 
             const result = this.OHGame.updatePlayerBid(roundNo, playerNo, bid);
 
+            const dealer = this.OHGame.getDealer(roundNo);
+            const dealerName = this.OHGame.getPlayerName(dealer, "PLAYERNO")
+            let dealerBid = this.OHGame.getPlayerBid(roundNo, dealer);
+            if (dealerBid === null) dealerBid = 0;
+
             if (result === -2) {
                 this.setState({
                     msgArea: `Players cannot bid more than number of cards dealt (${this.OHGame.deals[roundNo - 1].getCardsDealt()})`
@@ -187,9 +181,22 @@ class OhHell extends React.Component {
             }
             else if (result === -3) {
                 this.setState({
-                    msgArea: `Dealer cannot bid ${this.OHGame.deals[roundNo].getCardsDealt() - this.OHGame.getTotalBidAmt(roundNo) + bid}`
+                    msgArea: `Dealer ${dealerName} cannot bid ${this.OHGame.deals[roundNo].getCardsDealt() - this.OHGame.getTotalBidAmt(roundNo) + bid}`
                 });
             }
+            else if (this.OHGame.isScrewTD()) {
+                if (
+                    !this.OHGame.checkPlayerBid(
+                        roundNo, 
+                        dealer, 
+                        dealerBid
+                    )) {
+                    this.setState({
+                        msgArea: `Dealer ${dealerName} cannot bid ${dealerBid}`
+                    });
+                }
+            }
+
         }
         else if (event.target.name.slice(0,14) === "inputOHMadeRow") {
             const aDiv = event.target.name.indexOf("z");

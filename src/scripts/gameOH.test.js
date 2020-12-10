@@ -1098,27 +1098,31 @@ test('Class gameOH: Test Screw The Dealer Methods?', () => {
 
     let roundNo = 1; // Dealer is player 5. Bid Check is 10.
     let listBids = [0, 1, 2, 3, 3]; // Dealer canNOT bid 4.
+    expect(gameSTD.getDealer(roundNo)).toBe(5);
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
     
     listBids = [0, 1, 2, 3, 4]; // Dealer canNOT bid 4.
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
-
+    
     roundNo = 2; // Dealer is player 1. Bid Check is 9.
     listBids = [0, 1, 2, 3, 2]; // Dealer canNOT bid 1.
+    expect(gameSTD.getDealer(roundNo)).toBe(1);
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(8); // Success returns total bids for the round.
     
     listBids = [1, 1, 2, 3, 2]; // Dealer canNOT bid 1.
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
-
+    
     roundNo = 3; // Dealer is player 2. Bid Check is 8.
     listBids = [1, 1, 2, 3, 2]; // Dealer canNOT bid 0.
+    expect(gameSTD.getDealer(roundNo)).toBe(2);
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(9); // Success returns total bids for the round.
     
     listBids = [1, 0, 2, 3, 2]; // Dealer canNOT bid 0.
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(-3); // Dealer canNOT bid to make total bids equal to cards dealt.
-
+    
     roundNo = 4; // Dealer is player 3. Bid Check is 7.
     listBids = [1, 2, 3, 4, 2]; // Previous bids exceed cards dealt. Dealer no longer screwed. Dealer can bid anything.
+    expect(gameSTD.getDealer(roundNo)).toBe(3);
     expect(gameSTD.updateAllBids(roundNo, listBids)).toBe(12); // Success returns total bids for the round.
     
     let dealerPlayerNo = 3;
@@ -1127,6 +1131,7 @@ test('Class gameOH: Test Screw The Dealer Methods?', () => {
     roundNo = 5; // Dealer is player 4. Bid Check is 6.
     dealerPlayerNo = 4;
     listBids = [1, 1, 1, 2, 1]; // Dealer canNOT bid 2.
+    expect(gameSTD.getDealer(roundNo)).toBe(4);
     expect(gameSTD.updatePlayerBid(roundNo, 5, listBids[5 - 1])).toBe(0); // Success returns status 0.
     expect(gameSTD.getPlayerBid(roundNo, 5)).toBe(1);
     expect(gameSTD.updatePlayerBid(roundNo, 1, listBids[1 - 1])).toBe(0); // Success returns status 0.

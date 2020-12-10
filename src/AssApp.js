@@ -10,7 +10,6 @@ function AssApp() {
 
   const handleGameSelectClick = (e) => {
 
-    console.log("Handling Click to start Oh Hell");
     const tmpAppKey = e.target.getAttribute("ikey");
     setMessage(`Time to Setup Scoring for ${tmpAppKey}`);
     setAppKey(tmpAppKey);
@@ -23,7 +22,6 @@ function AssApp() {
 
   let output = [];
   if (appKey === "starter") {
-    console.log("Executing Starter Again.")
     output.push(
       <Starter
         key="Starter" 
@@ -32,8 +30,6 @@ function AssApp() {
       />);
   }
   else if (appKey === "Oh Hell") {
-    console.log("Executing Oh Hell.")
-    // output.push(<OhHell key="OhHell" sMessageArea={messageArea}/>);
     output.push(
       <OhHell 
         key="OhHell" 
@@ -42,7 +38,6 @@ function AssApp() {
       />);
   }
   else {
-    console.log("Executing Starter as Default.")
     output.push(
     <Starter 
       key="Starter" 

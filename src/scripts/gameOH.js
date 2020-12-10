@@ -124,6 +124,10 @@ class GameOH {
         return this.noPlayerCards;
     }
 
+    getDealer(roundNo) {
+        return this.deals[roundNo - 1].dealer;
+    }
+
     isScrewTD() {
         return this.screwTD;
     }
