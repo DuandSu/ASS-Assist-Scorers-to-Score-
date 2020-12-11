@@ -122,7 +122,6 @@ class OhHell extends React.Component {
         // if (event.target.name.slice(0,11) === "inputPlayer") {
         if (event.target.id === "idBtSetupCreate") {
             if (this.passedInputNoPlayers && this.passedInputNoPlayers) {
-                console.log(this.state)
 
                 this.OHGame = new gameOH.GameOH (
                     this.state.inputGameNo,
@@ -207,7 +206,6 @@ class OhHell extends React.Component {
             const made = parseInt(event.target.value);
 
             const result = this.OHGame.updatePlayerMade(roundNo, playerNo, made);
-            console.log("Result of Made: " + result);
             if (result === -2) {
                 this.setState({
                     msgArea: `Tricks made cannot exceed the number of cards dealt (${this.OHGame.deals[roundNo - 1].getCardsDealt()})`
@@ -222,23 +220,23 @@ class OhHell extends React.Component {
         let OHComp = [];
         if (this.state.OHMode === "Setup") {
             OHComp.push(
-                <OHGameSetup 
-                        inputGameNo={this.state.inputGameNo}
-                        inputGameComm={this.state.inputGameComm}
-                        inputNoPlayers={this.state.inputNoPlayers}
-                        inputNoPlayerCards={this.state.inputNoPlayerCards}
-                        dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
-                        defValue={this.state.dealPatternSelect}
-                        listOfPlayers={this.state.inputPlayer}
-                        screwTD = {this.screwTheDealer}
-                        onChange={this.onInputChangeSetup}
-                        onSubmit={this.onSubmitFormSetup}
-                        onCancel={this.props.handleReturntoMain}
+                <OHGameSetup key="OHGameSetup"
+                    inputGameNo={this.state.inputGameNo}
+                    inputGameComm={this.state.inputGameComm}
+                    inputNoPlayers={this.state.inputNoPlayers}
+                    inputNoPlayerCards={this.state.inputNoPlayerCards}
+                    dispMaxCards={this.state.inputNoPlayerCards ? this.state.inputNoPlayerCards : this.maxCardsCheck}
+                    defValue={this.state.dealPatternSelect}
+                    listOfPlayers={this.state.inputPlayer}
+                    screwTD = {this.screwTheDealer}
+                    onChange={this.onInputChangeSetup}
+                    onSubmit={this.onSubmitFormSetup}
+                    onCancel={this.props.handleReturntoMain}
                 />);
         }
         else if (this.state.OHMode === "Scoring") {
             OHComp.push(
-                <OHScoring 
+                <OHScoring key="OHScoring"
                         game={this.OHGame}
                         gameNo={this.state.inputGameNo}
                         gameComm={this.state.inputGameComm}
@@ -250,16 +248,16 @@ class OhHell extends React.Component {
         else OHComp.push(<div></div>);
 
         return (
-            <div key="OHDivMain">
-                <header key="OHHeaderMain" className="App-Header">
-                    <button key="OHBtMenu" className="App-Buttons">Menu</button>
-                    <h1 key="OHh1Main">Welcome to Oh Hell Scoring!</h1>
-                    <button key="OHBtLogin" className="App-Buttons">Login</button>
-                    <br key="OHbrMain"></br>
+            <div>
+                <header className="App-Header">
+                    <button className="App-Buttons">Menu</button>
+                    <h1>Welcome to Oh Hell Scoring!</h1>
+                    <button className="App-Buttons">Login</button>
+                    <br></br>
                 </header>
                 {OHComp}
-                <div key="OHDivMsg" className="App-Games">
-                    <p key="OHpMsgArea" className="Message-Area">{this.state.msgArea}</p>
+                <div className="App-Games">
+                    <p className="Message-Area">{this.state.msgArea}</p>
                 </div>
             </div>
         );

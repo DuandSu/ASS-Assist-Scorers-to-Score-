@@ -39,7 +39,7 @@ function OHScoringHeader(props) {
     );
 
     return (
-        <div key="OHTitleDivMain">
+        <div>
             {headerOH}
         </div>
     );

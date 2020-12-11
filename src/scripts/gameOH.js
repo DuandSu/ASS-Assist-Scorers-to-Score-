@@ -78,8 +78,6 @@ class GameOH {
             else
                 sDealer++;
         }
-        console.log("Scoreboard before going back up: ");
-        console.log(this.deals);
         if (continueUp) {
             for (let j = parseInt(noPlayerCards); j < noPlayerCards * 2 - 1; j++) {
                 this.deals.push(
@@ -96,8 +94,6 @@ class GameOH {
                     sDealer++;    
             }
         }
-        console.log("Scoreboard final: ");
-        console.log(this.deals);
     }
 
     getPlayerName(getKey, getMethod) {

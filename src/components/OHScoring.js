@@ -7,16 +7,12 @@ import OHScoringTotals from './OHScoringTotals.js';
 function OHScoring(props) {
 
     return (
-        <div key="OHScoringDivMain" className="OhHellSetup">
-            <div key="OHdivGameTitle">
-                <label key="OHlabelGameNo" className="OhHellGameNo">{`Game No: ${props.gameNo}`}</label>
-                <label key="OHlabelDealer" className="OhHellDealer">
-                    {`Start Dealer: ${props.startDealer}`}
-                </label>
-                <label key="OHlabelSTD" className="OhHellSTD">
-                    {`ScrewTD: ${props.screwTD}`}
-                </label>
-                <label key="OHlabelGameComm" className="OhHellGameComm">{`${props.gameComm}`}</label>
+        <div className="OhHellSetup">
+            <div>
+                <label className="OhHellGameNo">{`Game No: ${props.gameNo}`}</label>
+                <label className="OhHellDealer">{`Start Dealer: ${props.startDealer}`}</label>
+                <label className="OhHellSTD">{`ScrewTD: ${props.screwTD}`}</label>
+                <label className="OhHellGameComm">{`${props.gameComm}`}</label>
             </div>
             <OHScoringHeader 
                 listOfPlayers={props.game.listOfPlayers}

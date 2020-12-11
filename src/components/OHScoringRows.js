@@ -49,7 +49,7 @@ function OHScoringRows(props) {
     }
 
     return (
-        <div key="OHRowsDivMain">
+        <div>
             {rowsOH}
         </div>
     );

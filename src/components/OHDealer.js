@@ -4,12 +4,9 @@ function OHDealer(props) {
 
     let dealerOptions = [];
     for (let playerNo = 0; playerNo < props.listOfPlayers.length; playerNo++) {
-        console.log("OHDealer: ")
-        console.log("  option: " + `OHOptionDealer${playerNo}`);
         dealerOptions.push(
             <option 
                 value={playerNo}
-                // value={props.listOfPlayers[playerNo]}
                 key={`OHOptionDealer${playerNo}`}>
                 {props.listOfPlayers[playerNo]}
             </option>
@@ -17,10 +14,9 @@ function OHDealer(props) {
     }
 
     let dealerSelect =
-        <div key="OHDealerDivChild">
-            <label key="OHDealerSelectLabel" htmlFor="dealerSelect">Dealer: </label>
+        <div>
+            <label htmlFor="dealerSelect">Dealer: </label>
             <select
-                key="OHDealerSelect" 
                 name="dealerSelect"
                 type="number"
                 value={props.defValue}
@@ -30,7 +26,7 @@ function OHDealer(props) {
         </div>
 
     return (
-        <div key="OHDealerDivMain">
+        <div>
             {dealerSelect}
         </div>
     );

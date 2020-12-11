@@ -27,7 +27,7 @@ function OHScoringTotals(props) {
     );
 
     return (
-        <div key="OHTotalsDivMain">
+        <div>
             {totalsOH}
         </div>
     );
