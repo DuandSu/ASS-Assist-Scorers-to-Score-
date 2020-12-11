@@ -15,6 +15,7 @@ class OhHell extends React.Component {
         this.onInputChangeSetup = this.onInputChangeSetup.bind(this);
         this.onSubmitFormSetup = this.onSubmitFormSetup.bind(this);
         this.onInputChangeScoring = this.onInputChangeScoring.bind(this);
+        this.onSubmitScores = this.onSubmitScores.bind(this);
         this.state = {
             OHMode: "Setup",
             msgArea: this.props.sMessageArea,
@@ -214,7 +215,13 @@ class OhHell extends React.Component {
             this.OHGame.updateAllScores(roundNo); // Works but inefficient. Create updatePlayerScore.
         }
     }
-            
+        
+    onSubmitScores(event) {
+        if (event.target.id === "idBtScoringExit") {
+            console.log("Save the scored game!")
+        }
+    }
+
     render() {
         
         let OHComp = [];
@@ -243,6 +250,8 @@ class OhHell extends React.Component {
                         startDealer={this.OHGame.getPlayerName(this.OHGame.getDealer(1), "PLAYERNO")}
                         screwTD={this.screwTheDealer}
                         onChange={this.onInputChangeScoring}
+                        onSubmit={this.onSubmitScores}
+                        onCancel={this.props.handleReturntoMain}                        
                 />);
         }
         else OHComp.push(<div></div>);

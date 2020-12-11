@@ -67,7 +67,7 @@ class GameOH {
                 new deal.Deal(
                     this.deals.length + 1, // Round #
                     startAtOne 
-                        ? noPlayerCards + (noPlayerCards - this.deals.length)
+                        ? parseInt(noPlayerCards) + (noPlayerCards - this.deals.length)
                         : this.deals.length + 1 - noPlayerCards, // # of Cards
                         noPlayers, // # of Players
                         sDealer // Dealer for the round

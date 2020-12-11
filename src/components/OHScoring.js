@@ -13,6 +13,8 @@ function OHScoring(props) {
                 <label className="OhHellDealer">{`Start Dealer: ${props.startDealer}`}</label>
                 <label className="OhHellSTD">{`ScrewTD: ${props.screwTD}`}</label>
                 <label className="OhHellGameComm">{`${props.gameComm}`}</label>
+                <button id="idBtScoringExit" type="button" onClick={props.onSubmit}>Exit</button>
+                <button type="button" onClick={props.onCancel}>Cancel</button>     
             </div>
             <OHScoringHeader 
                 listOfPlayers={props.game.listOfPlayers}
