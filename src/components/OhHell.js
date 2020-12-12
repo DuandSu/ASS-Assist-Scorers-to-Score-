@@ -219,6 +219,8 @@ class OhHell extends React.Component {
     onSubmitScores(event) {
         if (event.target.id === "idBtScoringExit") {
             console.log("Save the scored game!")
+            const OHGameJSON = JSON.stringify(this.OHGame);
+            console.log(OHGameJSON);
         }
     }
 
