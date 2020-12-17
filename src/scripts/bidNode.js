@@ -1,7 +1,10 @@
 class BidNode {
 
-    constructor () {
-        this.bid = null;
+    constructor (setTo0) {
+        if (setTo0)
+            this.bid = 0;
+        else
+            this.bid = null;
         this.made = null;
         this.points = 0;
     }
@@ -26,9 +29,10 @@ class BidNode {
     }
 
     checkMade(made, cardsDealt) {
-        if (this.bid === null)
-            return null; // Bid updates must always precede made updates.
-        else if (made < 0)
+        if (this.bid === null) {
+            return null; // Bid updates must always precede made updates if null.
+        }
+        if (made < 0)
             return -1; // Negative Numbers NOT allowed.
         else if (made <= cardsDealt)
             return 0; // Make 0 to number of cards dealt is acceptable.

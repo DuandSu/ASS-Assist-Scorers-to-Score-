@@ -1,7 +1,7 @@
 // import { useReducer } from 'react/cjs/react.production.min';
 import deal from './deal.js';
 class GameOH {
-    constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers, startDealer) {
+    constructor (gameNo, gameComm, screwTD, noPlayers, noPlayerCards, dealPattern, listOfPlayers, setTo0, startDealer) {
         this.gameNo = gameNo;
         this.gameComm = gameComm;
         this.screwTD = screwTD;
@@ -51,7 +51,8 @@ class GameOH {
                     j + 1, // Round #
                     startAtOne ? j + 1 : noPlayerCards - j, // # of Cards
                     noPlayers, // # of Players
-                    sDealer // Dealer for the round
+                    sDealer, // Dealer for the round
+                    setTo0 // Set initial values of bids to 0, instead of null.
                 )
             );
             // sDealer = ((sDealer === this.noPlayers) ? 1 : sDealer++);
@@ -70,7 +71,8 @@ class GameOH {
                         ? parseInt(noPlayerCards) + (noPlayerCards - this.deals.length)
                         : this.deals.length + 1 - noPlayerCards, // # of Cards
                         noPlayers, // # of Players
-                        sDealer // Dealer for the round
+                        sDealer, // Dealer for the round
+                        setTo0 // Set initial values of bids and mades to 0, instead of null.
                 )
             );
             if (sDealer === this.noPlayers) 
@@ -85,7 +87,8 @@ class GameOH {
                         j + 1 + upAdjust, // Round #
                         startAtOne ? parseInt(noPlayerCards) + (noPlayerCards - j) - 1 : j + 2 - noPlayerCards, // # of Cards
                         noPlayers, // # of Players
-                        sDealer // Dealer for the round
+                        sDealer, // Dealer for the round
+                        setTo0 // Set initial values of bids and mades to 0, instead of null.
                     )
                 );
                 if (sDealer === this.noPlayers) 

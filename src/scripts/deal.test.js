@@ -160,6 +160,12 @@ test('Class Deal: Method Mades', () => {
     expect(roundOne.getMade(playerIdx)).toBe(10);
     expect(roundOne.getTotalMadeAmt()).toBe(10);
 
+    const roundNoS20 = 2;
+    const noCardsS20 = 9;
+    const setTo0 = true;
+
+    const roundS20 = new deal.Deal(roundNoS20, noCardsS20, noPlayers, setTo0);
+
 });
 //
 // Next:

@@ -2,7 +2,7 @@ import bidNode from "./bidNode";
 
 class Deal {
 
-    constructor (roundNo, cardsDealt, noPlayers, dealer) {
+    constructor (roundNo, cardsDealt, noPlayers, dealer, setTo0) {
         this.roundNo = roundNo;
         this.cardsDealt = cardsDealt;
         this.noPlayers = noPlayers;
@@ -10,7 +10,7 @@ class Deal {
         this.bidOH = [];
 
         for (let i = 0; i < this.noPlayers; i++) {
-            this.bidOH.push(new bidNode.BidNode());
+            this.bidOH.push(new bidNode.BidNode(setTo0));
         }
     }
 

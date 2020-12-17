@@ -121,6 +121,15 @@ test('Class bidNode: Method Mades', () => {
     expect(bidOH.updateMade(10, noCards)).toBe(0);
     expect(bidOH.made).toBe(10);
     expect(bidOH.getMade()).toBe(10);
+    //
+    // Allow argument to set bids to 0, rather than null, so easier to use for React
+    // controlled inputs.
+    //
+    const setTo0 = true;
+    const bidOHS20 = new bidNode.BidNode(setTo0);
+
+    expect(bidOHS20.updateMade(5, noCards)).toBe(0);
+    expect(bidOHS20.getMade()).toBe(5);
 });
 //
 // Next:
