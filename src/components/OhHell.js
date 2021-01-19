@@ -207,14 +207,13 @@ class OhHell extends React.Component {
             const playerNo = parseInt(event.target.name.slice(aDiv+1)) + 1;
             const made = parseInt(event.target.value);
 
-            console.log("Made: " + made);
             const result = this.OHGame.updatePlayerMade(roundNo, playerNo, made);
-            console.log("Result: " + result);
             if (result === -2) {
                 this.setState({
                     msgArea: `Tricks made cannot exceed the number of cards dealt (${this.OHGame.deals[roundNo - 1].getCardsDealt()})`
                 });                
             }
+            console.log("Made: " + made);
             this.OHGame.updateAllScores(roundNo); // Works but inefficient. Create updatePlayerScore.
         }
     }

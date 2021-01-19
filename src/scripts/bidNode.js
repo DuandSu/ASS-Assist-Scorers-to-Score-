@@ -51,16 +51,19 @@ class BidNode {
     }
 
     score() {
+        console.log("Scoring -> Bid = " + this.bid + " Made: " + this.made);
         if (this.bid === null)
             return null; // Bid updates must always precede scoring.
         else if (this.made === null)
             return null; // Bid updates must always precede scoring.
         else if (this.bid === this.made) {
             this.points = this.made === 0 ? 10 : this.made + this.made * 10; // Bid made. Score tricks taken plus bonus.
+            console.log("Bid Made Points: " + this.points);
             return this.points;
         }
         else {
             this.points = this.made; // Bid NOT made. Score trics taken but NO bonus.
+            console.log("Bid NOT Made Points: " + this.points);
             return this.points;
         }
     }

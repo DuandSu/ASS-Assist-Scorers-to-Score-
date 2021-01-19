@@ -31,7 +31,7 @@ function OHScoringRows(props) {
                     name={`inputOHMadeRow${roundIdx}z${playerIdx}`} 
                     type="number"
                     value={props.game.getPlayerMade(roundIdx + 1, playerIdx + 1) === null
-                        ? 0
+                        ? "-"
                         : props.game.getPlayerMade(roundIdx + 1, playerIdx + 1)}
                     onChange={props.onChange}>
                 </input>
